@@ -1,0 +1,30 @@
+# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+#
+
+#Evento Fields
+mesa=Mesa
+titulo=Titulo
+descripcion=Descripcion
+fecha=Fecha
+
+#Mesa Fields
+nombre=Nombre
+representante=Representante
+
+#Comentario Fields
+evento=Evento
+comentario=Comentario
+autor=Autor
+contacto=Contacto
+
+#CRUD Messages
+crud.save=Guardar
+crud.saveAndContinue=Guardar y Continuar Editando
+crud.delete=Borrar %s
+crud.add=Agregar %s
+crud.search=Buscar
+crud.saveAndAddAnother=Guardar y Crear Nuevo
+crud.index.title=Elige un objeto para administrar
+crud.index.add=Agregar
+crud.title=Administración

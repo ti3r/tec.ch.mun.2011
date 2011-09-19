@@ -1,0 +1,40 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<!-- #{welcome /}  -->
+
+#{ifnot eventos}
+	No existen eventos aun
+#{/ifnot}
+
+ 
+#{list items:eventos, as:'evento'}
+	
+	<fieldset class="evento-div" style="border-color: ${evento.mesa.color}" 
+		title="${evento.mesa.nombre}">
+		<legend><b>${evento.mesa.nombre}</b></legend>
+		<table style="width:100%">
+			<thead align="center">
+				<tr>
+					<th>
+						<a href="/eventos/${evento.id}">${evento.titulo}</a>
+					</th>
+				</tr>
+			</thead>
+			<tbody align="center">
+				<tr>
+					<td>
+						${evento.descripcion}
+					</td>
+				</tr>
+			</tbody>
+			<tfoot align="right">
+				<tr>
+					<td>
+						${evento.fecha} - <a href="mailto:${evento.mesa.representante}">${evento.mesa.representante}</a>
+					</td>
+				</tr>
+			</tfoot>
+		</table>
+	</fieldset>
+#{/list}

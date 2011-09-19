@@ -1,0 +1,7 @@
+.evento-div{
+	border-width: 3px; 
+	border-style: solid;
+	border-color: #AAAAAA;
+	border-radius: 5px;
+	-moz-border-radius: 10px;
+}

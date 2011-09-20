@@ -1,9 +1,12 @@
 package controllers;
 
 import play.*;
+import play.db.jpa.GenericModel.JPAQuery;
 import play.mvc.*;
 
 import java.util.*;
+
+import org.codehaus.groovy.runtime.typehandling.IntegerMath;
 
 import models.*;
 
@@ -11,10 +14,16 @@ public class Application extends Controller {
 
     public static void index() {
     	//retrieve the Eventos in desc order
-    	List eventos = Evento.find("order by fecha desc", null).fetch();
+    	JPAQuery q = Evento.find("order by fecha desc", null);
+    	List eventos = q.fetch(5);
+    	boolean moreFetch = (Evento.count() > 5);
+    	if (moreFetch){
+	    	Integer page = 1;
+    		render(eventos,moreFetch,page);
+    	}
     	render(eventos);
     }
-
+    
     public static void showEvento(Long id){
     	List eventos = (List) Evento.find(" id = "+id, null).fetch();
     	if (eventos.size() > 1){
@@ -25,4 +34,5 @@ public class Application extends Controller {
     		render(evento);
     	}
     }
+    
 }

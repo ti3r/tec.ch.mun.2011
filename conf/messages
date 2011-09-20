@@ -11,6 +11,7 @@ fecha=Fecha
 #Mesa Fields
 nombre=Nombre
 representante=Representante
+color=Color
 
 #Comentario Fields
 evento=Evento
@@ -18,6 +19,19 @@ comentario=Comentario
 autor=Autor
 contacto=Contacto
 
+#Index page
+index.masEventos=Mas Eventos
+
+#showEvento Page
+showEvento.mesaHeader=Mesa: 
+showEvento.repContactMsg=Contacta al representante en: 
+showEvento.fechaFooter=Publicado:
+showEvento.tweeterMsg=Esto paso en Tec.Ch.Mun 2011 
+showEvento.commentarios=Comentarios
+showEvento.anonimous=Anonimo
+showEvento.said= dijo:
+showEvento.contactAt=Contactalo:  
+showEvento.publishedOn=Publicado en: 
 #CRUD Messages
 crud.save=Guardar
 crud.saveAndContinue=Guardar y Continuar Editando

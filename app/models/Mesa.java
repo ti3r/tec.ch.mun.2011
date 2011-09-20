@@ -16,6 +16,7 @@ public class Mesa extends Model {
 	public String nombre;
 	@Email
 	public String representante;
+	@Match(value="#{1}[a-fA-F\\d]{6}")
 	public String color;
 	
 	public Mesa(String nombre, String representante){

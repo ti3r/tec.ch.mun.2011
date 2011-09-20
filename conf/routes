@@ -8,6 +8,20 @@ GET     /                                       Application.index
 #Application Requests
 GET		/eventos/{id}							Application.showEvento
 
+#Rest Services
+#Mesa services
+GET		/rest/mesas								MesaResources.mesasList(format:'xml')
+GET		/rest/mesas/{id}						MesaResources.getMesa(format:'xml')
+
+#Evento services
+GET		/rest/eventos				EventoResources.eventosList(format:'xml')
+GET		/rest/eventos/{id}			EventoResources.getEvento(format:'xml')
+GET		/rest/eventos/mas/{pagina}		EventoResources.getMoreEventos
+
+#Comentario Services
+GET		/rest/comentarios				ComentarioResources.comentariosList
+GET		/rest/comentarios/{eventoId}	ComentarioResources.getComentarios
+GET		/rest/comentarios/{eventoId}/mas/{id}	ComentarioResources.getComentarios
 
 # Import CRUD routes
 *     /admin           						module:crud

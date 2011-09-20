@@ -1,6 +1,7 @@
 package models;
 
 import play.*;
+import play.data.validation.Email;
 import play.data.validation.MaxSize;
 import play.data.validation.Required;
 import play.db.jpa.*;
@@ -19,7 +20,9 @@ public class Comentario extends Model {
 	public String comentario;
 	
 	public String autor;
+	@Email
 	public String contacto;
+	public Date fecha;
 	
 	public Comentario(Evento evento, String comentario){
 		this(evento, comentario, null);
@@ -39,6 +42,10 @@ public class Comentario extends Model {
 		this.contacto = contacto;
 	}
 	
+	@PrePersist
+	public void setFecha(){
+		fecha = new Date(System.currentTimeMillis());
+	}
 	
 	public String toString(){
 		return this.comentario;

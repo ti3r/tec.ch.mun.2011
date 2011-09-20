@@ -1,4 +1,106 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-${evento.titulo}
+<div class="evento-div" style="border-color:${evento.mesa.color}" >
+	<div class="mesa-color-box" style="background-color:${evento.mesa.color}" >
+	</div>
+	<div id="social" align="right">
+	<div id="fb-root"></div>
+	<script>(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) {return;}
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));</script>
+
+	<div class="fb-like" data-href="http://localhost:9000/eventos/${evento.id}" 
+		data-send="false" 
+		data-layout="button_count" 
+		data-show-faces="false"></div>
+	
+	<a href="https://twitter.com/share" class="twitter-share-button"
+		data-url="http://localhost:9000/eventos/${evento.id}"
+		data-text="&{'showEvento.tweeterMsg'}" 
+		data-count="horizontal">Tweet</a>
+	<script type="text/javascript" src="//platform.twitter.com/widgets.js">
+	</script>
+	
+	<!-- Place this tag where you want the +1 button to render -->
+	<g:plusone size="medium" href="http://localhost:9000/eventos/${evento.id}"></g:plusone>
+	
+	<!-- Place this render call where appropriate -->
+	<script type="text/javascript">
+	  (function() {
+	    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+	    po.src = 'https://apis.google.com/js/plusone.js';
+	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+	  })();
+	</script>
+	
+	</div>
+	
+	<div align="center">
+		<b>&{'showEvento.mesaHeader'} ${evento.mesa.nombre}</b>
+		&{'showEvento.repContactMsg'}
+		<a href="mailto:${evento.mesa.representante}" >
+			${evento.mesa.representante}
+		</a>
+	</div>
+	<div id="evento">
+		<p align="center">
+		${evento.titulo}
+		</p>
+		<p align="left">
+		${evento.descripcion}
+		</p>
+	</div>
+	
+	<hr />
+	
+	<div id="comments">
+	
+	</div>
+	
+	<input id="btnComentarios" type="button" value="&{'showEvento.commentarios'}" 
+		onclick="getComentarios();" />
+	
+	<div style="text-align: right;" class="evento-div">
+		&{'showEvento.fechaFooter'}${evento.fecha}
+	</div>
+</div>
+<script type="text/javascript">
+	
+	var pagina = 0;
+
+	function getComentarios(){
+		alert('lanzar ajax');
+		$.ajax({
+			type:'get',
+			url:'/rest/comentarios/${evento.id}/mas/'+pagina,
+			success:function(data){
+				$(data.comentarios).each(function(id, com){
+					$('#comments').append(
+							buildCommentHtml(com));
+				});
+				pagina = data.pagina;
+			}			
+		});
+	}
+		
+	function buildCommentHtml(comentario){
+		var result = (comentario.autor)? comentario.autor : "&{'showEvento.anonimous'}"
+		result += " &{'showEvento.said'} ";
+		result += comentario.comentario;
+		if (comentario.contacto){
+			result += " &{'showEvento.contactAt'} ";
+			result += '<a href="mailto:'+comentario.contacto+'">'+comentario.contacto+'</a>';
+		}
+		if (comentario.fecha){
+			result += "&{'showEvento.publishedOn'}"+comentario.fecha
+		}
+		result += '<br />';
+		return result;
+	}
+	
+</script>

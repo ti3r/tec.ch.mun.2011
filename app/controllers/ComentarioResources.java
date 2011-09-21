@@ -17,17 +17,17 @@ public class ComentarioResources extends Controller {
     }
 
     public static void getComentarios(Long eventoId,
-    		int pagina){
+    		Integer pagina){
     	JPAQuery query = Comentario.find(" evento.id = ? " +
     			"order by fecha desc ", eventoId);
-    	boolean moreFetch = (Comentario.count() > (pagina*5));
-    	int pag = pagina;
-    	List comentarios = query.fetch(++pag,5);
+    	List comentarios = query.fetch(++pagina,5);
+    	boolean moreFetch = (Comentario.count("evento.id = ?", eventoId) 
+    			> (pagina*5));
     	GetComentariosResult result = new GetComentariosResult();
     	result.comentarios = comentarios;
-    	result.moreFetch = moreFetch;
+    	result.mas = moreFetch;
     	//return the number of page that has been fetch
-    	result.pagina = pag;
+    	result.pagina = pagina;
     	renderJSON(result);
     	
     }

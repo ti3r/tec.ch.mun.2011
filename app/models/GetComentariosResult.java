@@ -9,6 +9,6 @@ import java.util.*;
 public class GetComentariosResult extends Model {
     
 	public List comentarios = null;
-	public boolean moreFetch = false;
+	public boolean mas = false;
 	public int pagina = 0;
 }

@@ -83,7 +83,12 @@
 					$('#comments').append(
 							buildCommentHtml(com));
 				});
-				pagina = data.pagina;
+				if (data.mas){
+					//set the page to the next page to fetch
+					pagina = data.pagina;
+				}else{
+					$('#btnComentarios').attr('disabled','disabled');
+				}
 			}			
 		});
 	}

@@ -9,7 +9,7 @@ public class MesaResources extends Controller {
 
     public static void mesasList() {
         List mesas = Mesa.findAll();
-        renderXml(mesas);
+        renderJSON(mesas);
     }
 
     public static void getMesa(Long id){

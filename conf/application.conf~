@@ -218,7 +218,3 @@ mail.smtp=mock
 %test.jpa.ddl=create
 %test.mail.smtp=mock
 
-
-#adding the GAE module to deploy on GAE
-require:
-	- play	-> gae	1.4

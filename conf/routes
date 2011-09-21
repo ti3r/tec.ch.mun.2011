@@ -10,8 +10,9 @@ GET		/eventos/{id}							Application.showEvento
 
 #Rest Services
 #Mesa services
-GET		/rest/mesas								MesaResources.mesasList(format:'xml')
-GET		/rest/mesas/{id}						MesaResources.getMesa(format:'xml')
+GET		/rest/mesas								MesaResources.mesasList
+GET		/rest/mesas/{id}						MesaResources.getMesa
+GET		/rest/mesas/{id}/eventos				MesaResources.getMesaEventos
 
 #Evento services
 GET		/rest/eventos				EventoResources.eventosList(format:'xml')

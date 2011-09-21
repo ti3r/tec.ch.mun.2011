@@ -16,7 +16,7 @@ public class MesaResources extends Controller {
     	List mesas = Mesa.find("id = ?", id).fetch();
     	if (mesas != null && !mesas.isEmpty()){
     		Mesa m = (Mesa) mesas.get(0);
-    		renderXml(m);
+    		renderJSON(m);
     	}else{
     		notFound("Mesas not found for the given id. "+id);
     	}

@@ -2,7 +2,9 @@
 #{set title:'Home' /}
 
 <div class="evento-div" style="border-color:${evento.mesa.color}" >
-	<div class="mesa-color-box" style="background-color:${evento.mesa.color}" >
+	<div style="background-color:${evento.mesa.color}" >
+		<img style="visibility:hidden; background-color: ${evento.mesa.color};" 
+			alt="loading..." src="/public/images/loader.gif" id="loader"/>
 	</div>
 	<div id="social" align="right">
 	<div id="fb-root"></div>
@@ -41,10 +43,14 @@
 	</div>
 	
 	<div align="center">
-		<b>&{'showEvento.mesaHeader'} ${evento.mesa.nombre}</b>
+		<b>&{'showEvento.mesaHeader'}</b>
+		<a href="@{showMesa()}?id=${evento.mesa.id}">
+			${evento.mesa.nombre}
+		</a>
+		<br />
 		&{'showEvento.repContactMsg'}
-		<a href="mailto:${evento.mesa.representante}" >
-			${evento.mesa.representante}
+		<a href="mailto:${evento.mesa.representante.correo}" >
+			${evento.mesa.representante.nombre}
 		</a>
 	</div>
 	<div id="evento">
@@ -74,11 +80,18 @@
 	var pagina = 0;
 
 	function getComentarios(){
-		alert('lanzar ajax');
+		$('#loader').css('visibility','visible');
 		$.ajax({
 			type:'get',
 			url:'/rest/comentarios/${evento.id}/mas/'+pagina,
 			success:function(data){
+				
+				var startTime = new Date();
+			    var endTime = null;
+			    do {
+			        endTime = new Date();
+			    } while ((endTime - startTime) < 1000);
+			    
 				$(data.comentarios).each(function(id, com){
 					$('#comments').append(
 							buildCommentHtml(com));
@@ -88,8 +101,13 @@
 					pagina = data.pagina;
 				}else{
 					$('#btnComentarios').attr('disabled','disabled');
+					$('#comments').append('${noMoreComentariosMsg}');
 				}
-			}			
+				$('#loader').css('visibility','hidden');
+			},
+			error:function(error){
+				$('#loader').css('visibility','hidden');
+			}
 		});
 	}
 		

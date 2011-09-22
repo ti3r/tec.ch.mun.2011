@@ -31,8 +31,16 @@ public class Application extends Controller {
     				"fetches the evento.id "+id);
     	}else{
     		Evento evento = (Evento) eventos.get(0);
-    		render(evento);
+    		String noMoreComentariosMsg = 
+    				play.i18n.Messages.get("showEvento.noMoreComentariosMsg");
+    		render(evento, noMoreComentariosMsg);
     	}
+    }
+    
+    
+    public static void showMesa(Long id){
+    	Mesa mesa = Mesa.findById(id);
+    	render(mesa);
     }
     
 }

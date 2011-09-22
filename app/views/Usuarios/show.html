@@ -8,10 +8,10 @@
     <div class="objectForm">
     #{form action:@save(object._key()), enctype:'multipart/form-data'}
         #{crud.form }
-        	#{crud.custom 'fecha'}
+        	#{crud.custom 'alta'}
         	<div >        
-            <label for="object_fecha">&{'fecha','fecha'}</label>
-    		<span id="object_fecha" class="" type="text" name="object.fecha">${object.fecha}</span>
+            <label for="object_alta">&{'alta','Alta'}</label>
+    		<span id="object_alta" class="" type="text" name="object.alta">${object.alta}</span>
 			</div>
         	#{/crud.custom}
         #{/crud.form }

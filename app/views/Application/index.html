@@ -30,7 +30,7 @@
 			<tfoot align="right">
 				<tr>
 					<td>
-						${evento.fecha} - <a href="mailto:${evento.mesa.representante}">${evento.mesa.representante}</a>
+						${evento.fecha} - <a href="mailto:${evento.mesa.representante.correo}">${evento.mesa.representante.nombre}</a>
 					</td>
 				</tr>
 			</tfoot>
@@ -64,8 +64,8 @@
 								objectHtml+='<td>'+object.descripcion+'</td></tr></tbody>';
 								objectHtml+='<tfoot align="right"><tr><td>';
 								objectHtml+=object.fecha+' - ';
-								objectHtml+='<a href="mailto:'+object.mesa.representante+'" >';
-								objectHtml+=object.mesa.representante+'</a>';
+								objectHtml+='<a href="mailto:'+object.mesa.representante.correo+'" >';
+								objectHtml+=object.mesa.representante.nombre+'</a>';
 								objectHtml+='</td></tr></tfoot></table>';
 								objectHtml+='</fieldset>';
 								$('#eventos').append(objectHtml);

@@ -3,8 +3,8 @@ package models;
 import java.awt.Color;
 
 import javax.persistence.Entity;
+import javax.persistence.OneToOne;
 
-import play.db.jpa.Model;
 import play.db.jpa.*;
 import play.*;
 import play.data.validation.*;
@@ -14,16 +14,16 @@ public class Mesa extends Model {
 
 	@Required(message="Nombre is requiered")	
 	public String nombre;
-	@Email
-	public String representante;
+	@OneToOne
+	public Usuario representante;
 	@Match(value="#{1}[a-fA-F\\d]{6}")
 	public String color;
 	
-	public Mesa(String nombre, String representante){
+	public Mesa(String nombre, Usuario representante){
 		this (nombre, representante, "#AAAAAA");
 	}
 	
-	public Mesa(String nombre, String representante,
+	public Mesa(String nombre, Usuario representante,
 			String color){
 		this.nombre = nombre;
 		this.representante = representante;

@@ -19,6 +19,10 @@ comentario=Comentario
 autor=Autor
 contacto=Contacto
 
+#Usuario Fields
+correo=E-Mail
+alta=Fecha de Alta
+
 #Index page
 index.masEventos=Mas Eventos
 
@@ -32,6 +36,10 @@ showEvento.anonimous=Anonimo
 showEvento.said= dijo:
 showEvento.contactAt=Contactalo:  
 showEvento.publishedOn=Publicado en: 
+#hmtl message that will be attached to the comments of one eventos please
+#escape ' characters because the msg will be wrapped by single quotes
+showEvento.noMoreComentariosMsg=No existen mas comentarios que mostrar
+
 #CRUD Messages
 crud.save=Guardar
 crud.saveAndContinue=Guardar y Continuar Editando
@@ -42,3 +50,4 @@ crud.saveAndAddAnother=Guardar y Crear Nuevo
 crud.index.title=Elige un objeto para administrar
 crud.index.add=Agregar
 crud.title=Administración
+crud.blank.title=Agregar %s

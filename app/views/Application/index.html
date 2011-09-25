@@ -44,6 +44,7 @@
 
 <script type="text/javascript">
 	var page = ${page};
+	
 	$(document).ready(function(){
 		if ($('#masEventos')){
 			$('#masEventos').click(function(){
@@ -73,6 +74,7 @@
 							//Disable the button if no more events available
 							if (!data.moreFetch){
 								$('#masEventos').attr('disabled','disabled');
+								//set the current page to the returned page
 							}else{
 								//set the returned page to the var
 								page = data.page;

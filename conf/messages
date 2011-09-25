@@ -23,10 +23,10 @@ contacto=Contacto
 correo=E-Mail
 alta=Fecha de Alta
 
-#Index page
+#Index page  - Application Controller
 index.masEventos=Mas Eventos
 
-#showEvento Page
+#showEvento Page  - Application Controller
 showEvento.mesaHeader=Mesa: 
 showEvento.repContactMsg=Contacta al representante en: 
 showEvento.fechaFooter=Publicado:
@@ -39,6 +39,13 @@ showEvento.publishedOn=Publicado en:
 #hmtl message that will be attached to the comments of one eventos please
 #escape ' characters because the msg will be wrapped by single quotes
 showEvento.noMoreComentariosMsg=No existen mas comentarios que mostrar
+
+#showMesa Page - Application Controller
+showMesa.recentEventos=Eventos Ocurridos Recientemente
+showMesa.addEvento=Agregar un Evento
+#general messages
+submit=Enviar
+reset=Limpiar
 
 #CRUD Messages
 crud.save=Guardar

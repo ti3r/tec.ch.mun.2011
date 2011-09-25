@@ -27,7 +27,7 @@ public class EventoResources extends Controller {
 	}
 
 	public static void getMoreEventos(int lastPage) {
-		JPAQuery q = Evento.find("order by fecha desc", null);
+		JPAQuery q = Evento.find("order by fecha desc");
 		int page = lastPage+1;
 		List eventos = q.fetch(page, 5);
 		MoreEventosResult result = new MoreEventosResult();

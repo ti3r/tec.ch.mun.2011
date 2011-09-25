@@ -12,6 +12,31 @@
 		#{get 'moreScripts' /}
     </head>
     <body>
+	
+		<div id="header">
+            <div id="logo">
+                <span>
+				<a href="/" >Tec.Ch.Mun.2011</a>
+				</span>
+				<span style="width:100%; text-align:right;" >
+					#{if session.username }
+                    <b>Bienvenido ${session.username} </b>
+					<a href="@{Secure.logout()}">&{'logout','Log out'}</a>
+					#{/if}
+					#{ifnot session.username }
+					<a href="@{Secure.login()}">&{'login','Log in'}</a>
+					#{/ifnot}
+				</span>
+            </div>
+			
+        </div>
+	
         #{doLayout /}
-    </body>
+    
+		<p id="footer">
+            Tec.Ch.Mun 2011 Web application. Powered by 
+            <a href="http://www.playframework.org">Play framework</a>
+        </p>
+		
+	</body>
 </html>

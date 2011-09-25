@@ -6,15 +6,13 @@
 	-moz-border-radius: 10px;
 }
 
-.evento-div table{
-	width:100%;
-}
-
-.evento-div tbody{
-	align:center;
-}
-
 .mesa-color-box{
 	width: 25px; 
 	height: 25px;
+}
+
+table{
+	border: 1px;
+	border-style:ridge;
+	border-collapse: collapse;
 }

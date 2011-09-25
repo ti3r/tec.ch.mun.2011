@@ -17,7 +17,7 @@ GET		/rest/mesas/{id}/eventos				MesaResources.getMesaEventos
 #Evento services
 GET		/rest/eventos				EventoResources.eventosList(format:'xml')
 GET		/rest/eventos/{id}			EventoResources.getEvento(format:'xml')
-GET		/rest/eventos/mas/{pagina}		EventoResources.getMoreEventos
+GET		/rest/eventos/mas/{lastPage}		EventoResources.getMoreEventos
 
 #Comentario Services
 GET		/rest/comentarios				ComentarioResources.comentariosList

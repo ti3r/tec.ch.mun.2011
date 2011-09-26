@@ -1,0 +1,98 @@
+﻿html, body
+{
+	margin: 0;
+	padding: 0;
+}
+
+html, body, table 
+{
+	font-family: 'Raleway', Arial, Verdana, Sans-Serif;
+	font-size: 14px;
+}
+
+img 
+{
+	border: 0;
+}
+
+pre 
+{
+	margin-bottom: 15px;
+	border: solid 1px black;
+	font-family: Courier New, Arial, Verdana, Sans-Serif;
+	font-size: 12px;
+	line-height: 15px;
+	padding: 6px 6px 6px 20px;
+	background: #ccc url(../img/linenumbers.png) no-repeat left top;
+	float: left;
+}
+
+p 
+{
+	clear: both;
+	margin: 0 0 15px 0;
+}
+
+h1, h2, h3, h4, h5, h6
+{
+	margin: 0;
+	padding: 0;
+	
+	font-family: 'Covered By Your Grace', Arial, Verdana, Sans-Serif;
+	color: Blue;
+}
+
+h1 
+{
+	font-size: 50px;
+}
+
+h2 
+{
+	font-size: 40px;
+}
+
+h3 
+{
+	font-size: 30px;
+}
+
+a
+{
+	font-weight: bold;
+	color: Black;
+	text-decoration: none;
+}
+
+a:hover
+{
+	text-decoration: underline;
+}
+
+#Wrapper
+{
+	width: 1000px;
+	margin: 0 auto;
+}
+
+.example 
+{
+	margin-bottom: 25px;
+}
+
+.documentation p 
+{
+	margin: 0;
+}
+
+.options li 
+{
+	margin-bottom: 15px;
+}
+
+.pagead 
+{
+	padding: 10px;
+	background: #ddd;
+	border: solid 1px gray;
+}

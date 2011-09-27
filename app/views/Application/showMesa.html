@@ -1,23 +1,29 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-<b>&{'mesa'}&nbsp ${mesa.nombre}</b>
-
-#{if eventos}
-<table>
-<thead>
-<tr><th colspan="2">&{'showMesa.recentEventos'}</th></tr>
-</thead>
-<tbody>
-	#{list items:eventos, as:'evento'}
-		<tr>
-			<td>${evento.titulo}</td>
-			<td>${evento.descripcion}</td>
-		</tr>
-	#{/list}
-</tbody>
-</table>
-#{/if}
+<div class="evento-div" style="border-color:${mesa.color}">
+	<h1>&{'showMesa.header'}</h1>
+	<label for="mesa.nombre">&{'nombre'}</label>
+	<b>${mesa.nombre}</b>
+	<br />
+	<label for="mesa.representante">&{'representante'}</label>
+	<a href="mailto:${mesa.representante.correo}">${mesa.representante.nombre}</a>
+	#{if eventos}
+	<table>
+	<thead>
+	<tr><th colspan="2">&{'showMesa.recentEventos'}</th></tr>
+	</thead>
+	<tbody>
+		#{list items:eventos, as:'evento'}
+			<tr>
+				<td>${evento.titulo}</td>
+				<td>${evento.descripcion}</td>
+			</tr>
+		#{/list}
+	</tbody>
+	</table>
+	#{/if}
+</div>
 
 #{Secure.mesaBelongsToUser user:session.username, mesaId:mesa.id}
 	<hr />

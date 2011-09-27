@@ -44,6 +44,8 @@ showEvento.noMoreComentariosMsg=No existen mas comentarios que mostrar
 #showMesa Page - Application Controller
 showMesa.recentEventos=Eventos Ocurridos Recientemente
 showMesa.addEvento=Agregar un Evento
+showMesa.header=Descripción de Mesa
+
 #general messages
 submit=Enviar
 reset=Limpiar

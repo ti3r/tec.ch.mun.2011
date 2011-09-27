@@ -46,8 +46,11 @@ public class Application extends Controller {
     }
     
     public static void showEventos(int pagina){
-    	Evento.find("order by evento.fecha").fetch(pagina, 5);
-    	render();
+    	if (pagina <= 0)
+    		pagina =1;
+    	List eventos = Evento.find("order by fecha desc").fetch(pagina, 5);
+    	boolean masEventos = Evento.count() > (pagina*5);
+    	render(eventos, pagina, masEventos);
     }
     
     public static void addEvento(@Valid Evento evento){
@@ -68,7 +71,7 @@ public class Application extends Controller {
     }
     
     public static void mensajes(){
-    	List mensajes = Mensaje.findAll();
+    	List mensajes = Mensaje.find("order by fecha desc").fetch();
     	render(mensajes);
     }
     

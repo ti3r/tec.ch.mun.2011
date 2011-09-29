@@ -4,9 +4,9 @@
 <table style="width: 100%">
 	<tr>
 		<td valign="top" width="50%">
-			<div id="eventos">
+			<div class="evento-div" id="eventos">
 			#{ifnot eventos}
-				No existen eventos aun
+				<h1 align="center"><span>&{'index.noEventos'}</span></h1>
 			#{/ifnot}
 			#{list items:eventos, as:'evento'}
 				
@@ -47,7 +47,43 @@
 			<div class="evento-div" id="noticias">
 				<h1 align="center"><span>&{'index.noticias'}</span></h1>
 				#{list items:mensajes, as:'mensaje'}
+					<div>
 					<p>${mensaje.mensaje}</p>
+					<div id="social" align="right">
+					<div id="fb-root"></div>
+					<script>(function(d, s, id) {
+					  var js, fjs = d.getElementsByTagName(s)[0];
+					  if (d.getElementById(id)) {return;}
+					  js = d.createElement(s); js.id = id;
+					  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+					  fjs.parentNode.insertBefore(js, fjs);
+					}(document, 'script', 'facebook-jssdk'));</script>
+				
+					<div class="fb-like" data-href="http://tec-ch-mun-2011.herokuapp.com/mesajes/${mensaje.id}" 
+						data-send="false" 
+						data-layout="button_count" 
+						data-show-faces="false"></div>
+					
+					<a href="https://twitter.com/share" class="twitter-share-button"
+						data-url="http://tec-ch-mun-2011.herokuapp.com/mesajes/${mensaje.id}"
+						data-text="&{'showEvento.tweeterMsg'}" 
+						data-count="horizontal">Tweet</a>
+					<script type="text/javascript" src="//platform.twitter.com/widgets.js">
+					</script>
+					
+					<!-- Place this tag where you want the +1 button to render -->
+					<g:plusone size="medium" href="http://tec-ch-mun-2011.herokuapp.com/mesajes/${mensaje.id}"></g:plusone>
+					
+					<!-- Place this render call where appropriate -->
+					<script type="text/javascript">
+					  (function() {
+					    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+					    po.src = 'https://apis.google.com/js/plusone.js';
+					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+					  })();
+					</script>
+					</div>
+					</div>
 				#{/list}
 			</div>
 		</td>

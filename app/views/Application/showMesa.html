@@ -1,40 +1,48 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-<b>&{'mesa'}&nbsp ${mesa.nombre}</b>
-
-#{if eventos}
-<table>
-<thead>
-<tr><th colspan="2">&{'showMesa.recentEventos'}</th></tr>
-</thead>
-<tbody>
-	#{list items:eventos, as:'evento'}
-		<tr>
-			<td>${evento.titulo}</td>
-			<td>${evento.descripcion}</td>
-		</tr>
-	#{/list}
-</tbody>
-</table>
-#{/if}
+<div class="evento-div" style="border-color:${mesa.color}">
+	<h1>&{'showMesa.header'}</h1>
+	<label for="mesa.nombre">&{'nombre'}</label>
+	<b>${mesa.nombre}</b>
+	<br />
+	<label for="mesa.representante">&{'representante'}</label>
+	<a href="mailto:${mesa.representante.correo}">${mesa.representante.nombre}</a>
+	#{if eventos}
+	<table>
+	<thead>
+	<tr><th colspan="2">&{'showMesa.recentEventos'}</th></tr>
+	</thead>
+	<tbody>
+		#{list items:eventos, as:'evento'}
+			<tr>
+				<td>${evento.titulo}</td>
+				<td>${evento.descripcion}</td>
+			</tr>
+		#{/list}
+	</tbody>
+	</table>
+	#{/if}
+</div>
 
 #{Secure.mesaBelongsToUser user:session.username, mesaId:mesa.id}
-	<form action="@{addEvento()}" method="post">
-		<input type="hidden" id="mesaId" name="mesaId" value="${mesa.id}" />
+	<hr />
+	#{form @Application.addEvento() }
+		<input type="hidden" id="evento.mesa.id" name="evento.mesa.id" value="${mesa.id}" />
 		<table>
 			<thead>
 				<tr><th colspan="2">&{'showMesa.addEvento','Agregar Evento'}</th></tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td><label for="object.titulo">&{'titulo','Titulo'}</label></td>
-					<td><input type="text" id="titulo" name="titulo" /><br /></td>
+					<td><label for="evento.titulo">&{'titulo','Titulo'}</label></td>
+					<td><input type="text" id="evento.titulo" name="evento.titulo" /></td>
 				</tr>
 				<tr>
-					<td><label for="object.descripcion">&{'descripcion','Descripción'}</label></td>
+					<td><label for="evento.descripcion">&{'descripcion','Descripción'}</label></td>
 					<td>
-						<textarea cols="25" rows="7" spellcheck="true" false" id="desc" name="desc" ></textarea>
+						<textarea cols="25" rows="7" spellcheck="true"
+							 id="evento.descripcion" name="evento.descripcion" ></textarea>
 					</td>
 				</tr>
 				<tr>
@@ -45,5 +53,5 @@
 				</tr>
 			</tbody>
 		</table>
-	</form>
+	#{/form}
 #{/Secure.mesaBelongsToUser}

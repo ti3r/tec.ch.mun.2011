@@ -5,19 +5,63 @@
         <title>#{get 'title' /}</title>
         <meta charset="${_response_encoding}">
         <link rel="stylesheet" media="screen" href="@{'/public/stylesheets/main.css'}">
-		
+		<link rel="stylesheet" media="screen" href="@{'/public/stylesheets/jquery.pictureMenu.css'}">
         #{get 'moreStyles' /}
         <link rel="shortcut icon" type="image/png" href="@{'/public/images/favicon.png'}">
         <script src="@{'/public/javascripts/jquery-1.5.2.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+		<script src="@{'/public/javascripts/jquery.cookie.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+		<script src="@{'/public/javascripts/jquery.pictureMenu.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 		#{get 'moreScripts' /}
     </head>
     <body>
 	
-		<div id="header">
+		<!--Menu -->
+		<div class="MainMenu">
+			<div>
+				<a href="@{index()}" >
+				<img src="@{'/public/images/menu-1.png'}" />
+				<img src="@{'/public/images/text-1.png'}" />
+				</a>
+			</div>
+			<div>
+				<img src="@{'/public/images/menu-2.png'}" />
+				<img src="@{'/public/images/text-2.png'}" />
+				<ul class="submenu light">
+                            <li><a href="#">Mesa 1</a></li>
+                            <li><a href="#">Mesa 2</a></li>
+                            <li><a href="#">Mesa 3</a></li>
+                            <li><a href="#">Mesa 4</a></li>
+                </ul>
+			</div>
+			<div>
+				<a href="@{showEventos()}" >
+				<img src="@{'/public/images/menu-2.png'}" />
+				<img src="@{'/public/images/text-2.png'}" />
+				</a>
+			</div>
+			<div>
+				<a href="@{mensajes()}" >
+				<img src="@{'/public/images/menu-3.png'}" />
+				<img src="@{'/public/images/text-3.png'}" />
+				</a>
+			</div>
+		</div>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$(".MainMenu").pictureMenu({
+				menuHeight: 200,
+				animateTime: 600,
+				menuInactiveHide: 0.2,
+				menuWidthHover: 75,
+				menuAutoOpen: 3,
+				leaveActiveOpen: true,
+				leaveActiveOpenCookie: true
+				});
+			});
+		</script>
+		
+		<div id="header" align="right">
             <div id="logo">
-                <span>
-				<a href="/" >Tec.Ch.Mun.2011</a>
-				</span>
 				<span style="width:100%; text-align:right;" >
 					#{if session.username }
                     <b>Bienvenido ${session.username} </b>
@@ -30,7 +74,7 @@
             </div>
 			
         </div>
-	
+		
         #{doLayout /}
     
 		<p id="footer">

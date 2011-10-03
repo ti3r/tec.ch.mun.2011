@@ -1,49 +1,67 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-<!-- #{welcome /}  -->
+<table style="width: 100%">
+	<tr>
+		<td valign="top" width="50%">
+			<div id="eventos">
+			#{ifnot eventos}
+				No existen eventos aun
+			#{/ifnot}
+			#{list items:eventos, as:'evento'}
+				
+				<fieldset class="evento-div" style="border-color: ${evento.mesa.color}" >
+					<legend>
+						<a href="@{showMesa()}?id=${evento.mesa.id}">
+							<b>${evento.mesa.nombre}</b>
+						</a>
+					</legend>
+					<table style="width:100%">
+						<thead align="center">
+							<tr>
+								<th>
+									<a href="/eventos/${evento.id}">${evento.titulo}</a>
+								</th>
+							</tr>
+						</thead>
+						<tbody align="center">
+							<tr>
+								<td>
+									${evento.descripcion}
+								</td>
+							</tr>
+						</tbody>
+						<tfoot align="right">
+							<tr>
+								<td>
+									${evento.fecha} - <a href="mailto:${evento.mesa.representante.correo}">${evento.mesa.representante.nombre}</a>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+				</fieldset>
+			#{/list}
+			</div>
+		</td>
+		<td valign="top" width="50%">
+			<div class="evento-div" id="noticias">
+				<h1 align="center"><span>&{'index.noticias'}</span></h1>
+				#{list items:mensajes, as:'mensaje'}
+					<p>${mensaje.mensaje}</p>
+				#{/list}
+			</div>
+		</td>
+	</tr>
+</table>
 
-#{ifnot eventos}
-	No existen eventos aun
-#{/ifnot}
-
-<div id="eventos">
-#{list items:eventos, as:'evento'}
-	
-	<fieldset class="evento-div" style="border-color: ${evento.mesa.color}" >
-		<legend><b>${evento.mesa.nombre}</b></legend>
-		<table style="width:100%">
-			<thead align="center">
-				<tr>
-					<th>
-						<a href="/eventos/${evento.id}">${evento.titulo}</a>
-					</th>
-				</tr>
-			</thead>
-			<tbody align="center">
-				<tr>
-					<td>
-						${evento.descripcion}
-					</td>
-				</tr>
-			</tbody>
-			<tfoot align="right">
-				<tr>
-					<td>
-						${evento.fecha} - <a href="mailto:${evento.mesa.representante.correo}">${evento.mesa.representante.nombre}</a>
-					</td>
-				</tr>
-			</tfoot>
-		</table>
-	</fieldset>
-#{/list}
-</div>
+<!-- 
 #{if moreFetch}
 <input type="button" id="masEventos" value="&{'index.masEventos','Mas Eventos'}" />
 #{/if}
-
+ -->
+ 
 <script type="text/javascript">
-	var page = ${page};
+	var page = 0${page};
 	
 	$(document).ready(function(){
 		if ($('#masEventos')){

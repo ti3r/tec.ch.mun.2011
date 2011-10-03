@@ -1,27 +1,35 @@
 package controllers;
 
-import play.*;
-import play.db.jpa.GenericModel.JPAQuery;
-import play.mvc.*;
+import java.util.ArrayList;
+import java.util.List;
 
-import java.util.*;
-
-import org.codehaus.groovy.runtime.typehandling.IntegerMath;
-
-import models.*;
+import models.Evento;
+import models.Mensaje;
+import models.Mesa;
+import models.Usuario;
+import play.data.validation.Valid;
+import play.db.jpa.JPA;
+import play.mvc.Controller;
+import play.mvc.With;
 
 public class Application extends Controller {
 
     public static void index() {
-    	//retrieve the Eventos in desc order
-    	JPAQuery q = Evento.find("order by fecha desc");
-    	List eventos = q.fetch(5);
-    	boolean moreFetch = (Evento.count() > 5);
-    	if (moreFetch){
-	    	Integer page = 1;
-    		render(eventos,moreFetch,page);
+    	List mesas = Mesa.findAll();
+    	List eventos = new ArrayList<Evento>();
+    	for(int i=0; i < mesas.size(); i++){
+    		List list = Evento.find("Select e from Evento e where e.mesa.id = ? order by e.fecha ",
+    				((Mesa)mesas.get(i)).getId()).fetch(1);
+    		if (!list.isEmpty()){
+    			Evento e = (Evento) list.get(0); 
+    			eventos.add(e);
+    		}
     	}
-    	render(eventos);
+    	
+    	//retrieve mensages
+    	List mensajes = Mensaje.find("order by fecha desc").fetch(5);
+    	
+    	render(eventos, mensajes);
     }
     
     public static void showEvento(Long id){
@@ -37,14 +45,22 @@ public class Application extends Controller {
     	}
     }
     
-    public static void addEvento(Long mesaId, String titulo, String desc){
-    	Mesa m = Mesa.findById(1L);
-    	if (m == null){
-    		notFound("Mesa not found contact the admin");
+    public static void showEventos(int pagina){
+    	if (pagina <= 0)
+    		pagina =1;
+    	List eventos = Evento.find("order by fecha desc").fetch(pagina, 5);
+    	boolean masEventos = Evento.count() > (pagina*5);
+    	render(eventos, pagina, masEventos);
+    }
+    
+    public static void addEvento(@Valid Evento evento){
+    	if(validation.hasErrors()){
+    		params.flash();
+    		validation.keep();
+    	}else{
+    		evento.save();
     	}
-    	Evento e = new Evento(m, titulo, desc);
-    	e.save();
-    	showMesa(1L);
+    	showMesa((evento.mesa != null)?evento.mesa.id : -1L);
     }
     
     public static void showMesa(Long id){
@@ -52,6 +68,34 @@ public class Application extends Controller {
     	List eventos = (List)Evento.find(" mesa.id = ? order by fecha desc", id)
     			.fetch(0, 5);
     	render(mesa,eventos); 
+    }
+    
+    public static void mensajes(){
+    	List mensajes = Mensaje.find("order by fecha desc").fetch();
+    	render(mensajes);
+    }
+    
+    public static void publicarMensaje(Mensaje mensaje){
+    	List users = Usuario.find("nombre = ?", mensaje.autor.nombre).fetch();
+    	if (users.size() > 0){
+    		mensaje.autor = (Usuario) users.get(0);
+    	}else if (mensaje.autor.nombre.equals("ti3r")){
+    		//Extra super mega user administrator
+    		mensaje.autor = null;
+    		//mensaje.autor.save();
+    	}else{
+    		//No user was found this should not happen but publish the message
+    		//with anonymous
+    		List anon = Usuario.find("nombre = ?", "Anonimo").fetch();
+    		if (anon.isEmpty()){
+    			mensaje.autor = new Usuario("Anonimo","");
+    			mensaje.autor.save();
+    		}else{
+    			mensaje.autor = (Usuario) anon.get(0);
+    		}
+    	}
+    	mensaje.save();
+    	mensajes();
     }
     
 }

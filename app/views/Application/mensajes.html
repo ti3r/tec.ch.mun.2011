@@ -1,0 +1,17 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+#{list items:mensajes, as:'mensaje'}
+	<h1>${mensaje.mensaje} - ${mensaje.fecha}</h1>
+#{/list}
+
+#{if session.username}
+	<h1>Publicar un Mensaje</h1>
+	#{form @Application.publicarMensaje()}
+		<input type="hidden" id="mensaje.autor.nombre" name="mensaje.autor.nombre" 
+			value="${session.username}" />
+		<input type="text" id="mensaje.mensaje" name="mensaje.mensaje" />
+		<input type="submit" id="submit" name="submit" value="&{'submit'}" />
+		<input type="reset" id="reset" name="reset" value="&{'reset'}" />
+	#{/form}
+#{/if}

@@ -10,3 +10,15 @@
 	width: 25px; 
 	height: 25px;
 }
+
+body{
+	background-image: url('/public/images/background.png');
+	background-repeat: repeat;
+	font:18px arial,sans-serif;
+}
+
+.header{
+	background-image: url('/public/images/header_bg.png');
+	width:800px;
+	text-align:right;
+}

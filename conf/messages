@@ -26,6 +26,7 @@ alta=Fecha de Alta
 #Index page  - Application Controller
 index.masEventos=Mas Eventos
 index.noticias=Noticias
+index.noEventos=No existen eventos aun
 
 #showEvento Page  - Application Controller
 showEvento.mesaHeader=Mesa: 

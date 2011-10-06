@@ -16,16 +16,7 @@ public class Application extends Controller {
 
     public static void index() {
     	List mesas = Mesa.findAll();
-    	List eventos = new ArrayList<Evento>();
-    	for(int i=0; i < mesas.size(); i++){
-    		List list = Evento.find("Select e from Evento e where e.mesa.id = ? order by e.fecha ",
-    				((Mesa)mesas.get(i)).getId()).fetch(1);
-    		if (!list.isEmpty()){
-    			Evento e = (Evento) list.get(0); 
-    			eventos.add(e);
-    		}
-    	}
-    	
+    	List eventos = Evento.find("order by fecha desc").fetch(5);
     	//retrieve mensages
     	List mensajes = Mensaje.find("order by fecha desc").fetch(5);
     	

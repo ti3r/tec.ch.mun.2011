@@ -14,7 +14,7 @@
 		#{get 'moreScripts' /}
     </head>
     <body>
-	
+		<center>
 		<!--Menu -->
 		<div class="MainMenu">
 			<div>
@@ -27,11 +27,9 @@
 				<img src="@{'/public/images/menu-2.png'}" />
 				<img src="@{'/public/images/text-2.png'}" />
 				<ul class="submenu light">
-                            <li><a href="#">Mesa 1</a></li>
-                            <li><a href="#">Mesa 2</a></li>
-                            <li><a href="#">Mesa 3</a></li>
-                            <li><a href="#">Mesa 4</a></li>
-                </ul>
+					<li><a href="#">Desarme</a></li>
+				</ul>
+                
 			</div>
 			<div>
 				<a href="@{showEventos()}" >
@@ -60,27 +58,29 @@
 			});
 		</script>
 		
-		<div id="header" align="right">
+		<div id="header" class="header">
             <div id="logo">
-				<span style="width:100%; text-align:right;" >
+				<span style="text-align:right;" >
 					#{if session.username }
-                    <b>Bienvenido ${session.username} </b>
+                    Bienvenido <b>${session.username} </b>
 					<a href="@{Secure.logout()}">&{'logout','Log out'}</a>
 					#{/if}
 					#{ifnot session.username }
-					<a href="@{Secure.login()}">&{'login','Log in'}</a>
+					<a href="@{Secure.login()}"><img src="@{'/public/images/login.png'}"></img></a>
 					#{/ifnot}
 				</span>
             </div>
-			
         </div>
 		
+		<div id="content" style="width:800px">
         #{doLayout /}
-    
-		<p id="footer">
+		</div>
+		
+		<p style="width:800px" id="footer">
             Tec.Ch.Mun 2011 Web application. Powered by 
             <a href="http://www.playframework.org">Play framework</a>
         </p>
 		
+		</center>
 	</body>
 </html>

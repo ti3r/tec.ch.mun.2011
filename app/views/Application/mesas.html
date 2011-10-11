@@ -1,0 +1,9 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<div>
+#{list items:mesas, as:'mesa'}
+	${mesa.nombre}	
+#{/list}
+
+</div>

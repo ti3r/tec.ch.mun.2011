@@ -12,13 +12,89 @@
 }
 
 body{
-	background-image: url('/public/images/background.png');
+	background-image: url('/public/images/wood.png');
 	background-repeat: repeat;
-	font:18px arial,sans-serif;
+	font:arial,sans-serif;
+	max-width: 820px;
+	margin: auto;
+	text-align: center;
+	padding-top: 25px;
 }
 
-.header{
-	background-image: url('/public/images/header_bg.png');
-	width:800px;
+#log_information{
+	padding-right: 25px;
 	text-align:right;
+	clear: both;
+	margin: auto;
 }
+
+#header{
+	background-image: url('/public/images/notebook.png');
+}
+
+#menu {
+	padding-top: 5px;
+	font-family:sans-serif;
+	font-size:12px;
+	font-variant:small-caps;
+	font-family:cursive;
+	text-align: center;
+	min-height: 120px;
+	max-width: 820px;
+	width: 500px;
+	margin:0 auto;
+}
+#menu ul{
+    margin:auto;
+    padding:0;
+    text-align: center;
+    
+}
+
+#menu li{
+    width:100px;
+    height:50px;
+    color:#191919;
+    float:left;
+    text-align:center;
+    overflow:hidden;
+}
+#menu a{
+    color:#FFF;
+    text-decoration:none;
+}
+
+#menu p{
+    padding:0px 5px;
+}
+
+
+#menu .subtext{
+        padding-top:15px;
+        color: #FFFFFF;
+    }
+
+/**/
+/*Menu Color Classes*/
+.green{background:#6AA63B;}
+.yellow{background:#FBC700;}
+.red{background:#D52100;}
+.purple{background:#5122B4;}
+.blue{background:#0292C0;}
+
+#content{
+	background-image: url('/public/images/notebook.png');
+	background-repeat: repeat-y;
+	font: 12px;
+	min-height: 220px;
+	max-width: 820px;
+	clear: both;
+}
+#footer{
+	max-width: 820px;
+	text-align: center;
+	font-family:cursive;
+	clear: both;
+	background-image: url('/public/images/notebook.png');
+}
+

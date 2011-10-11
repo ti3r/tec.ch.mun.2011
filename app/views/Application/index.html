@@ -4,10 +4,10 @@
 <table style="width: 100%">
 	<tr>
 		<td valign="top" width="50%">
-			<div class="evento-div" id="eventos">
-			<h1 align="center"><span>&{'index.eventos'}</span></h1>
+			<div id="eventos">
+			<h1 align="center"><span style="text-decoration: underline;">&{'index.eventos'}</span></h1>
 			#{ifnot eventos}
-				<h1 align="center"><span>&{'index.noEventos'}</span></h1>
+				<h3 align="center"><span>&{'index.noEventos'}</span></h3>
 			#{/ifnot}
 			#{list items:eventos, as:'evento'}
 				
@@ -45,8 +45,11 @@
 			</div>
 		</td>
 		<td valign="top" width="50%">
-			<div class="evento-div" id="noticias">
-				<h1 align="center"><span>&{'index.noticias'}</span></h1>
+			<div id="noticias">
+				<h1 align="center"><span style="text-decoration: underline;">&{'index.noticias'}</span></h1>
+				#{ifnot mensajes}
+					<h3 align="center"><span>&{'index.noMensajes'}</span></h3>
+				#{/ifnot}
 				#{list items:mensajes, as:'mensaje'}
 					<div>
 					<p>${mensaje.mensaje}</p>

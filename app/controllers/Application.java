@@ -89,4 +89,8 @@ public class Application extends Controller {
     	mensajes();
     }
     
+    public static void mesas(){
+    	List mesas = Mesa.findAll();
+    	render(mesas);
+    }
 }

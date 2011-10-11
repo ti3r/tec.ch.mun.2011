@@ -1,17 +1,35 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
+<div>
 #{list items:mensajes, as:'mensaje'}
 	<h1>${mensaje.mensaje} - ${mensaje.fecha}</h1>
 #{/list}
 
 #{if session.username}
-	<h1>Publicar un Mensaje</h1>
+	<div id="publica_mensaje">
+	Publicar un Mensaje
 	#{form @Application.publicarMensaje()}
-		<input type="hidden" id="mensaje.autor.nombre" name="mensaje.autor.nombre" 
-			value="${session.username}" />
-		<input type="text" id="mensaje.mensaje" name="mensaje.mensaje" />
-		<input type="submit" id="submit" name="submit" value="&{'submit'}" />
-		<input type="reset" id="reset" name="reset" value="&{'reset'}" />
+		<table>
+		<tr>
+			<td valign="top">
+				<input type="hidden" id="mensaje.autor.nombre" name="mensaje.autor.nombre" 
+				value="${session.username}" />
+				<label for="mensaje.mensaje">&{'mensajes.mensaje'}</label>
+			</td>
+			<td>
+				<textarea id="mensaje.mensaje" name="mensaje.mensaje" cols="20" rows="5">
+				</textarea>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			<input type="submit" id="submit" name="submit" value="&{'submit'}" />
+			<input type="reset" id="reset" name="reset" value="&{'reset'}" />
+			</td>
+		</tr>
+		</table>
 	#{/form}
+	</div>
 #{/if}
+</div>

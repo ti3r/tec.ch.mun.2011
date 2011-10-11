@@ -1,7 +1,10 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-<div id="eventosDiv">
+<div id="eventosDiv" style="padding-left:0.5cm; width:95%">
+#{ifnot eventos}
+	No existen eventos aun.
+#{/ifnot}
 #{list items:eventos, as:'evento'}
 	
 				<fieldset class="evento-div" style="border-color: ${evento.mesa.color}" >

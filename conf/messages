@@ -43,11 +43,15 @@ showEvento.publishedOn=Publicado en:
 #hmtl message that will be attached to the comments of one eventos please
 #escape ' characters because the msg will be wrapped by single quotes
 showEvento.noMoreComentariosMsg=No existen mas comentarios que mostrar
+showEvento.noEventos=No existen eventos aun!!!! Intenta mas Tarde
 
 #showMesa Page - Application Controller
 showMesa.recentEventos=Eventos Ocurridos Recientemente
 showMesa.addEvento=Agregar un Evento
 showMesa.header=Descripción de Mesa
+
+#Mensajes view - Application Controller
+mensajes.noMensajes=No exiten comunicados que mostrar
 
 #general messages
 submit=Enviar
@@ -55,6 +59,18 @@ reset=Limpiar
 welcome=Bienvenido
 footer=Tec.Ch.Mun 2011 Aplicación Web. Desarrollada con 
 play_framework_link=Play Framework
+
+#Menu messages
+menu.home=Inicio
+menu.home.dtl=Pagina de Inicio
+menu.mesas=Mesas
+menu.mesas.dtl=Trabajo de Tec.ch.mun
+menu.eventos=Que Pasa?
+menu.eventos.dtl=Que ha ocurrido con las mesas
+menu.mensajes=Mensajes
+menu.mensajes.dtl=Comunica Algo!!
+menu.acerca=Acerda de..
+menu.acerca.dtl=Cosas Legales
 
 #CRUD Messages
 crud.save=Guardar

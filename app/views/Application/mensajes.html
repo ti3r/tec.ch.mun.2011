@@ -2,6 +2,9 @@
 #{set title:'Home' /}
 
 <div>
+#{ifnot eventos}
+	&{'mensajes.noMensajes'}
+#{/ifnot}
 #{list items:mensajes, as:'mensaje'}
 	<h1>${mensaje.mensaje} - ${mensaje.fecha}</h1>
 #{/list}

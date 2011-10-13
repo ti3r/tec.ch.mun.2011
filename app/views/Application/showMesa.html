@@ -7,7 +7,12 @@
 	<b>${mesa.nombre}</b>
 	<br />
 	<label for="mesa.representante">&{'representante'}</label>
-	<a href="mailto:${mesa.representante.correo}">${mesa.representante.nombre}</a>
+	#{if mesa.representante}
+		<a href="mailto:${mesa.representante.correo}">${mesa.representante.nombre}</a>
+	#{/if}
+	#{ifnot mesa.representante}
+		No hay un representante para esta mesa
+	#{/ifnot}
 	#{if eventos}
 	<table>
 	<thead>
@@ -26,27 +31,28 @@
 </div>
 
 #{Secure.mesaBelongsToUser user:session.username, mesaId:mesa.id}
-	<hr />
+	<span onclick="showDialog()">Agregar evento</span>
+	<div id="post_evento" class="modal_dialog">
 	#{form @Application.addEvento() }
 		<input type="hidden" id="evento.mesa.id" name="evento.mesa.id" value="${mesa.id}" />
-		<table>
+		<table style="padding-top: 25px;">
 			<thead>
 				<tr><th colspan="2">&{'showMesa.addEvento','Agregar Evento'}</th></tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td><label for="evento.titulo">&{'titulo','Titulo'}</label></td>
+					<td align="left"><label for="evento.titulo">&{'titulo','Titulo'}</label></td>
 					<td><input type="text" id="evento.titulo" name="evento.titulo" /></td>
 				</tr>
 				<tr>
-					<td><label for="evento.descripcion">&{'descripcion','Descripción'}</label></td>
+					<td align="left"><label for="evento.descripcion">&{'descripcion','Descripción'}</label></td>
 					<td>
-						<textarea cols="25" rows="7" spellcheck="true"
+						<textarea cols="20" rows="5" spellcheck="true"
 							 id="evento.descripcion" name="evento.descripcion" ></textarea>
 					</td>
 				</tr>
 				<tr>
-					<td>
+					<td colspan="2">
 						<input type="submit" value="&{'submit'}" />
 						<input type="reset" value="&{'reset'}" />
 					</td>
@@ -54,4 +60,12 @@
 			</tbody>
 		</table>
 	#{/form}
+	</div>
+	<script type="text/javascript">
+		$('#post_evento').modialog();
+		function showDialog(){
+			$('#post_evento').modialog('open');
+		}
+				
+	</script>
 #{/Secure.mesaBelongsToUser}

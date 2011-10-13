@@ -35,7 +35,10 @@
 						<tfoot align="right">
 							<tr>
 								<td>
-									${evento.fecha} - <a href="mailto:${evento.mesa.representante.correo}">${evento.mesa.representante.nombre}</a>
+									${evento.fecha} - 
+									#{if evento.mesa.representante}
+									<a href="mailto:${evento.mesa.representante.correo}">${evento.mesa.representante.nombre}</a>
+									#{/if}
 								</td>
 							</tr>
 						</tfoot>

@@ -71,7 +71,9 @@ body{
 
 #menu .subtext{
         padding-top:15px;
-        color: #FFFFFF;
+        color: #333333;
+        font: bolder;
+        font-weight: 900;
     }
 
 /**/
@@ -79,7 +81,7 @@ body{
 .green{background:#6AA63B;}
 .yellow{background:#FBC700;}
 .red{background:#D52100;}
-.purple{background:#5122B4;}
+.purple{background:#7344D6;}
 .blue{background:#0292C0;}
 
 #content{
@@ -98,3 +100,53 @@ body{
 	background-image: url('/public/images/notebook.png');
 }
 
+.modal_dialog{
+	display: none;
+	min-width: 120px;
+	min-height: 120px;
+	width:400px;
+	height:300px;
+	background-color: #EEEEEE;
+	border-style: groove;
+	border-color: 000000;
+	cursor: pointer;
+	background-image: url('/public/images/post_it.png');
+}
+.modal_dialog p{
+	font-family: sans-serif;
+	font-weight:bolder;
+	text-decoration: underline;
+	font-style: oblique;
+}
+
+.modal_dialog table{
+	margin: 0 auto;
+	text-align: center;
+}
+
+
+#mensaje_box{
+	text-align: left;
+	text-indent: 55px;
+}
+
+.mesa_box{
+	text-align: left;
+	text-indent: 55px;
+}
+
+.mesa_box a{
+	font-variant: small-caps;
+	text-decoration: none;
+}
+
+.evento_box{
+	
+}
+
+hr{
+	background-color: #123456;
+	height: 8px;
+	background-image: url('/public/images/backgroundBlack.png');
+	margin: 0 auto;
+}

@@ -6,37 +6,21 @@
 	&{'showEventos.noEventos'}
 #{/ifnot}
 #{list items:eventos, as:'evento'}
-	
-				<fieldset class="evento-div" style="border-color: ${evento.mesa.color}" >
-					<legend>
-						<a href="@{showMesa()}?id=${evento.mesa.id}">
-							<b>${evento.mesa.nombre}</b>
-						</a>
-					</legend>
-					<table style="width:100%">
-						<thead align="center">
-							<tr>
-								<th>
-									<a href="/eventos/${evento.id}">${evento.titulo}</a>
-								</th>
-							</tr>
-						</thead>
-						<tbody align="center">
-							<tr>
-								<td>
-									${evento.descripcion}
-								</td>
-							</tr>
-						</tbody>
-						<tfoot align="right">
-							<tr>
-								<td>
-									${evento.fecha} - <a href="mailto:${evento.mesa.representante.correo}">${evento.mesa.representante.nombre}</a>
-								</td>
-							</tr>
-						</tfoot>
-					</table>
-				</fieldset>
+	<div class="evento-box">
+		<div style="text-align: right;">
+			${evento.fecha}
+		</div>
+		<a href="/eventos/${evento.id}">${evento.titulo}</a>
+		<div style="text-align: left ;">
+		&{'showEventos.representante'}
+		#{if evento.mesa.representante}
+			<a href="mailto:${evento.mesa.representante.correo}">
+				${evento.mesa.representante.nombre}
+			</a>
+		#{/if}
+		</div>
+		<hr />
+	</div>		
 #{/list}
 </div>
 #{if masEventos}

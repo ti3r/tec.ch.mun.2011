@@ -7,6 +7,9 @@ import play.data.validation.Required;
 import play.db.jpa.*;
 
 import javax.persistence.*;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
 @Entity
@@ -33,6 +36,10 @@ public class Evento extends Model {
 	
 	public String toString(){
 		return this.titulo;
+	}
+	
+	public String getFecha(){
+		return SimpleDateFormat.getDateInstance().format(fecha);
 	}
 	
 	@PrePersist

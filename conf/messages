@@ -52,6 +52,7 @@ showMesa.header=Descripción de Mesa
 
 #Mensajes view - Application Controller
 mensajes.noMensajes=No exiten comunicados que mostrar
+mensajes.mensaje=Escribe tu mensaje
 
 #general messages
 submit=Enviar

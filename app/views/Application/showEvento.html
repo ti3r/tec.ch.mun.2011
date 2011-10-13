@@ -49,9 +49,11 @@
 		</a>
 		<br />
 		&{'showEvento.repContactMsg'}
+		#{if evento.mesa.representante}
 		<a href="mailto:${evento.mesa.representante.correo}" >
 			${evento.mesa.representante.nombre}
 		</a>
+		#{/if}
 	</div>
 	<div id="evento">
 		<p align="center">

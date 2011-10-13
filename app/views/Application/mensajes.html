@@ -2,16 +2,22 @@
 #{set title:'Home' /}
 
 <div>
-#{ifnot eventos}
+#{ifnot mensajes}
 	&{'mensajes.noMensajes'}
 #{/ifnot}
 #{list items:mensajes, as:'mensaje'}
-	<h1>${mensaje.mensaje} - ${mensaje.fecha}</h1>
+	<div id="mensaje_box">
+		${mensaje.mensaje}
+		#{if mensaje.autor}
+			<span>&{'mensage.autor'}:</span>
+			<span>${mensage.autor.nombre}</span>
+		#{/if} 
+	</div>
 #{/list}
-
 #{if session.username}
-	<div id="publica_mensaje">
-	Publicar un Mensaje
+<span onclick="showDialog();">Agregar Mensaje</span>
+	<div id="publica_mensaje" class="modal_dialog">
+	<p>Publicar un Mensaje</p>
 	#{form @Application.publicarMensaje()}
 		<table>
 		<tr>
@@ -20,19 +26,33 @@
 				value="${session.username}" />
 				<label for="mensaje.mensaje">&{'mensajes.mensaje'}</label>
 			</td>
+		</tr>
+		<tr>
 			<td>
-				<textarea id="mensaje.mensaje" name="mensaje.mensaje" cols="20" rows="5">
-				</textarea>
+				<textarea id="mensaje.mensaje" name="mensaje.mensaje" cols="20" rows="5"></textarea>
 			</td>
 		</tr>
 		<tr>
 			<td colspan="2">
-			<input type="submit" id="submit" name="submit" value="&{'submit'}" />
+			<input type="submit" id="submit" onclick="return valEmptyMsg();" name="submit" value="&{'submit'}" />
 			<input type="reset" id="reset" name="reset" value="&{'reset'}" />
 			</td>
 		</tr>
 		</table>
 	#{/form}
 	</div>
+	<script type="text/javascript">
+		$('#publica_mensaje').modialog();
+		
+		function showDialog(){
+			$('#publica_mensaje').modialog('open');
+		}
+		function valEmtpyMsg(){
+			alert('Alog aqui que pedo');
+			$('#mensaje.mensaje').val('Hola Mundo');
+			return false;
+		}
+		
+	</script>
 #{/if}
 </div>

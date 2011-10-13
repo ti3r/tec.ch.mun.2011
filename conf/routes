@@ -23,6 +23,7 @@ GET		/rest/eventos/mas/{lastPage}		EventoResources.getMoreEventos
 GET		/rest/comentarios				ComentarioResources.comentariosList
 GET		/rest/comentarios/{eventoId}	ComentarioResources.getComentarios
 GET		/rest/comentarios/{eventoId}/mas/{pagina}	ComentarioResources.getComentarios
+POST	/rest/comentarios/add			ComentarioResources.postComentrio
 
 # Import CRUD routes
 *     /admin           						module:crud

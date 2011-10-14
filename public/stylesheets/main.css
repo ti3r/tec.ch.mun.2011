@@ -98,7 +98,7 @@ body{
 	font-family:cursive;
 	clear: both;
 	min-height: 150px;
-	background-image: url('/public/images/notebook_bot2.png');
+	background-image: url('/public/images/notebook_bot.png');
 }
 
 .modal_dialog{

@@ -34,14 +34,12 @@ body{
 
 #menu {
 	padding-top: 5px;
-	font-family:sans-serif;
 	font-size:14px;
-	font-variant:small-caps;
 	font-family:cursive;
 	text-align: center;
 	min-height: 120px;
 	max-width: 820px;
-	width: 500px;
+	width: 600px;
 	margin:0 auto;
 }
 #menu ul{
@@ -52,7 +50,7 @@ body{
 }
 
 #menu li{
-    width:100px;
+    width:120px;
     height:50px;
     color:#191919;
     float:left;
@@ -70,12 +68,17 @@ body{
 
 
 #menu .subtext{
-        padding-top:15px;
-        color: #333333;
-        font: bolder;
-        font-weight: 900;
-    }
+    padding-top:15px;
+    color: #333333;
+    font: bolder;
+    font-weight: 900;
+}
 
+#menu img{
+	padding-left:5px;
+	padding-top:5px;
+	float: left;		
+}
 /**/
 /*Menu Color Classes*/
 .green{background:#6AA63B;}
@@ -88,6 +91,7 @@ body{
 	background-image: url('/public/images/notebook.png');
 	background-repeat: repeat-y;
 	font: 12px;
+	font-family:cursive;
 	min-height: 220px;
 	max-width: 820px;
 	clear: both;
@@ -99,6 +103,14 @@ body{
 	clear: both;
 	min-height: 150px;
 	background-image: url('/public/images/notebook_bot.png');
+	
+}
+#footer span{
+	padding-top:50px;
+	vertical-align: bottom;
+}
+#footer a{
+	vertical-align: bottom;
 }
 
 .modal_dialog{
@@ -140,10 +152,6 @@ body{
 	font-variant: small-caps;
 	text-decoration: none;
 	font-size: 24px;
-}
-
-.evento_box{
-	
 }
 
 hr{

@@ -97,4 +97,8 @@ public class Application extends Controller {
     	List mesas = Mesa.findAll();
     	render(mesas);
     }
+    
+    public static void acercade(){
+    	render();
+    }
 }

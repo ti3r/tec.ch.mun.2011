@@ -5,91 +5,51 @@
 	<tr>
 		<td valign="top" width="50%">
 			<div id="eventos">
-			<h1 align="center"><span style="text-decoration: underline;">&{'index.eventos'}</span></h1>
+			<h1 align="center">
+				<a href="@{showEventos()}" style="text-decoration: underline; color:#000000">&{'index.eventos'}</a>
+			</h1>
 			#{ifnot eventos}
 				<h3 align="center"><span>&{'index.noEventos'}</span></h3>
 			#{/ifnot}
+			<hr />
 			#{list items:eventos, as:'evento'}
-				
-				<fieldset class="evento-div" style="border-color: ${evento.mesa.color}" >
-					<legend>
-						<a href="@{showMesa()}?id=${evento.mesa.id}">
-							<b>${evento.mesa.nombre}</b>
-						</a>
-					</legend>
-					<table style="width:100%">
-						<thead align="center">
-							<tr>
-								<th>
-									<a href="/eventos/${evento.id}">${evento.titulo}</a>
-								</th>
-							</tr>
-						</thead>
-						<tbody align="center">
-							<tr>
-								<td>
-									${evento.descripcion}
-								</td>
-							</tr>
-						</tbody>
-						<tfoot align="right">
-							<tr>
-								<td>
-									${evento.fecha} - 
-									#{if evento.mesa.representante}
-									<a href="mailto:${evento.mesa.representante.correo}">${evento.mesa.representante.nombre}</a>
-									#{/if}
-								</td>
-							</tr>
-						</tfoot>
-					</table>
-				</fieldset>
+				<div>
+						<a href="/eventos/${evento.id}">${evento.titulo}</a>
+						<p>${evento.fecha}#{if evento.mesa.representante} - <a href="mailto:${evento.mesa.representante.correo}">${evento.mesa.representante.nombre}</a>#{/if}</p>
+				</div>
 			#{/list}
+			<hr />
 			</div>
 		</td>
 		<td valign="top" width="50%">
 			<div id="noticias">
-				<h1 align="center"><span style="text-decoration: underline;">&{'index.noticias'}</span></h1>
+				<h1 align="center"><a href="@{mensajes()}" style="text-decoration: underline; color:#000000;">&{'index.noticias'}</a></h1>
 				#{ifnot mensajes}
 					<h3 align="center"><span>&{'index.noMensajes'}</span></h3>
 				#{/ifnot}
 				#{list items:mensajes, as:'mensaje'}
 					<div>
-					<p>${mensaje.mensaje}</p>
-					<div id="social" align="right">
-					<div id="fb-root"></div>
-					<script>(function(d, s, id) {
-					  var js, fjs = d.getElementsByTagName(s)[0];
-					  if (d.getElementById(id)) {return;}
-					  js = d.createElement(s); js.id = id;
-					  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-					  fjs.parentNode.insertBefore(js, fjs);
-					}(document, 'script', 'facebook-jssdk'));</script>
-				
-					<div class="fb-like" data-href="http://tec-ch-mun-2011.herokuapp.com/mesajes/${mensaje.id}" 
-						data-send="false" 
-						data-layout="button_count" 
-						data-show-faces="false"></div>
+						<p>${mensaje.mensaje}</p>
+						<div id="social" align="right">
+						<div id="fb-root"></div>
+						<script>(function(d, s, id) {
+						  var js, fjs = d.getElementsByTagName(s)[0];
+						  if (d.getElementById(id)) {return;}
+						  js = d.createElement(s); js.id = id;
+						  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+						  fjs.parentNode.insertBefore(js, fjs);
+						}(document, 'script', 'facebook-jssdk'));</script>
 					
-					<a href="https://twitter.com/share" class="twitter-share-button"
-						data-url="http://tec-ch-mun-2011.herokuapp.com/mesajes/${mensaje.id}"
-						data-text="&{'showEvento.tweeterMsg'}" 
-						data-count="horizontal">Tweet</a>
-					<script type="text/javascript" src="//platform.twitter.com/widgets.js">
-					</script>
-					
-					<!-- Place this tag where you want the +1 button to render -->
-					<g:plusone size="medium" href="http://tec-ch-mun-2011.herokuapp.com/mesajes/${mensaje.id}"></g:plusone>
-					
-					<!-- Place this render call where appropriate -->
-					<script type="text/javascript">
-					  (function() {
-					    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-					    po.src = 'https://apis.google.com/js/plusone.js';
-					    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-					  })();
-					</script>
-					</div>
+						<span>
+						<a href="https://twitter.com/share" class="twitter-share-button" 
+						data-url="http://tec-ch-mun-2011.herokuapp.com/mesajes/${mensaje.id}" 
+						data-text="&{'index.noticiaTweet'}"
+						data-count="none">Tweet</a>
+						</span>
+						<span class="fb-like" data-href="http://tec-ch-mun-2011.herokuapp.com/mesajes/${mensaje.id}" 
+							data-send="false" data-width="300" data-show-faces="true"></span>
+						</div>
+						<hr />
 					</div>
 				#{/list}
 			</div>

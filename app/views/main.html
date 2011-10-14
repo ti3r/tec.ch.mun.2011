@@ -10,9 +10,20 @@
         <script src="@{'/public/javascripts/jquery-1.5.2.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 		<script src="@{'/public/javascripts/jquery.easing.1.3.js'}" type="text/javascript" charset="${_response_encoding}"></script>
 		<script src="@{'/public/javascripts/jquery.modialog.min.js'}" type="text/javascript" charset="${_response_encoding}"></script>
+		<script type="text/javascript" src="//platform.twitter.com/widgets.js"></script>
 		#{get 'moreScripts' /}
     </head>
     <body>
+		<!--Facebook jdk html5 script -->
+		<div id="fb-root"></div>
+		<script>(function(d, s, id) {
+		  var js, fjs = d.getElementsByTagName(s)[0];
+		  if (d.getElementById(id)) {return;}
+		  js = d.createElement(s); js.id = id;
+		  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+		  fjs.parentNode.insertBefore(js, fjs);
+		}(document, 'script', 'facebook-jssdk'));</script>		
+		<!--End of Facebook jdk html5 script -->
 		<img style="align:left;" src="@{'/public/images/logo.png'}"></img>
 		<div id="log_information">
 				<span style="text-align:right;" >
@@ -21,7 +32,7 @@
 					<a href="@{Secure.logout()}"><img src="@{'/public/images/logout.png'}"></img></a>
 					#{/if}
 					#{ifnot session.username }
-					<a href="@{Secure.login()}"><img src="@{'/public/images/login.png'}"></img></a>
+					<a href="@{Secure.login()}" ><img src="@{'/public/images/login.png'}"></img></a>
 					#{/ifnot}
 				</span>
 		</div>
@@ -30,23 +41,28 @@
 			<div id="menu">
 			<ul>
 				<li class="green">
+					<!--<img src="@{'/public/images/house.png'}" />-->
 					<p><a href="/">&{'menu.home'}</a></p>
 					<p class="subtext">&{'menu.home.dtl'}</p>
 				</li>
 				<li class="yellow">
+					<!--<img src="@{'/public/images/house.png'}" />-->
 					<p><a href="@{mesas()}">&{'menu.mesas'}</a></p>
 					<p class="subtext">&{'menu.mesas.dtl'}</p>
 				</li>
 				<li class="red">
+					<!--<img src="@{'/public/images/folder.png'}" />-->
 					<p><a href="@{showEventos()}">&{'menu.eventos'}</a></p>
 					<p class="subtext">&{'menu.eventos.dtl'}</p>
 				</li>
 				<li class="blue">
+					<!--<img src="@{'/public/images/mailclosed.png'}" />-->
 					<p><a href="@{mensajes()}">&{'menu.mensajes'}</a></p>
 					<p class="subtext">&{'menu.mensajes.dtl'}</p>
 				</li>
 				<li class="purple">
-					<p><a href="#">&{'menu.acerca'}</a></p>
+					<!--<img src="@{'/public/images/speechbubble.png'}" />-->
+					<p><a href="@{acercade()}">&{'menu.acerca'}</a></p>
 					<p class="subtext">&{'menu.acerca.dtl'}</p>
 				</li>
 			</ul>
@@ -71,9 +87,13 @@
         #{doLayout /}
 		</div>
 		
-	<div id="footer">&{'footer'}<a href="http://www.playframework.org">&{'play_framework_link'}</a></div>
-		<div style="min-height:15px;">
-			<!-- Add a small div so we can see the bottom of the footer -->
+	<div id="footer">
+		<div style="padding-top:100px;">
+		<span>&{'footer'}<a href="http://www.playframework.org">&{'play_framework_link'}</a></span>
 		</div>
+	</div>
+	<div style="min-height:80px;">
+		<!-- Add a small div so we can see the bottom of the footer -->
+	</div>
 	</body>
 </html>

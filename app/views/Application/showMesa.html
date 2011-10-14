@@ -1,71 +1,72 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-<div class="evento-div" style="border-color:${mesa.color}">
-	<h1>&{'showMesa.header'}</h1>
+<div>
+	<span class="fb-like" data-href="http://tec-ch-mun-2011.herokuapp.com/application/showmesa?id=${mesa.id}" 
+	data-send="true" data-width="400" data-show-faces="false" data-font="verdana"></span>
+	
+	#{Secure.mesaBelongsToUser user:session.username, mesaId:mesa.id}
+		<span><img src="/public/images/plus_icon.gif" onclick="showDialog()" /></span>
+		<span>Agregar evento</span>
+	#{/Secure.mesaBelongsToUser}
+	<hr />
+	<div>&{'showMesa.header'}</div>
 	<label for="mesa.nombre">&{'nombre'}</label>
 	<b>${mesa.nombre}</b>
-	<br />
+	
 	<label for="mesa.representante">&{'representante'}</label>
 	#{if mesa.representante}
 		<a href="mailto:${mesa.representante.correo}">${mesa.representante.nombre}</a>
 	#{/if}
 	#{ifnot mesa.representante}
-		No hay un representante para esta mesa
+		&{'showMesa.noRepresentante'}
 	#{/ifnot}
 	#{if eventos}
-	<table>
-	<thead>
-	<tr><th colspan="2">&{'showMesa.recentEventos'}</th></tr>
-	</thead>
-	<tbody>
+	
+	&{'showMesa.recentEventos'}
+	
 		#{list items:eventos, as:'evento'}
-			<tr>
-				<td>${evento.titulo}</td>
-				<td>${evento.descripcion}</td>
-			</tr>
+				<div>
+				<div>${evento.titulo}</div>
+				<div>${evento.descripcion}</div>
+				</div>
 		#{/list}
-	</tbody>
-	</table>
+	
 	#{/if}
-</div>
 
-#{Secure.mesaBelongsToUser user:session.username, mesaId:mesa.id}
-	<span onclick="showDialog()">Agregar evento</span>
-	<div id="post_evento" class="modal_dialog">
-	#{form @Application.addEvento() }
-		<input type="hidden" id="evento.mesa.id" name="evento.mesa.id" value="${mesa.id}" />
-		<table style="padding-top: 25px;">
-			<thead>
-				<tr><th colspan="2">&{'showMesa.addEvento','Agregar Evento'}</th></tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td align="left"><label for="evento.titulo">&{'titulo','Titulo'}</label></td>
-					<td><input type="text" id="evento.titulo" name="evento.titulo" /></td>
-				</tr>
-				<tr>
-					<td align="left"><label for="evento.descripcion">&{'descripcion','Descripción'}</label></td>
-					<td>
-						<textarea cols="20" rows="5" spellcheck="true"
-							 id="evento.descripcion" name="evento.descripcion" ></textarea>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="2">
-						<input type="submit" value="&{'submit'}" />
-						<input type="reset" value="&{'reset'}" />
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	#{/form}
-	</div>
-	<script type="text/javascript">
-		$('#post_evento').modialog();
-		function showDialog(){
-			$('#post_evento').modialog('open');
-		}
-				
-	</script>
-#{/Secure.mesaBelongsToUser}
+<div id="post_evento" class="modal_dialog">
+		#{form @Application.addEvento() }
+			<input type="hidden" id="evento.mesa.id" name="evento.mesa.id" value="${mesa.id}" />
+			<table style="padding-top: 25px;">
+				<thead>
+					<tr><th colspan="2">&{'showMesa.addEvento','Agregar Evento'}</th></tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td align="left"><label for="evento.titulo">&{'titulo','Titulo'}</label></td>
+						<td><input type="text" id="evento.titulo" name="evento.titulo" /></td>
+					</tr>
+					<tr>
+						<td align="left"><label for="evento.descripcion">&{'descripcion','Descripción'}</label></td>
+						<td>
+							<textarea cols="20" rows="5" spellcheck="true"
+								 id="evento.descripcion" name="evento.descripcion" ></textarea>
+						</td>
+					</tr>
+					<tr>
+						<td colspan="2">
+							<input type="submit" value="&{'submit'}" />
+							<input type="reset" value="&{'reset'}" />
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		#{/form}
+</div>
+<script type="text/javascript">
+			$('#post_evento').modialog();
+			function showDialog(){
+				$('#post_evento').modialog('open');
+			}
+</script>
+</div>

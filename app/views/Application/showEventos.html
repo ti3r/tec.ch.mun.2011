@@ -1,17 +1,28 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
+<div>
+<div style="text-align: left; padding-left: 25px;">
+<a href="http://tec-ch-mun-2011.herokuapp.com/application/showeventos" 
+class="twitter-share-button" 
+data-url="http://tec-ch-mun-2011.herokuapp.com/application/showeventos" 
+data-text="&{'mensajes.tweet'}"
+data-count="none">Tweet</a>
+<span class="fb-like" data-href="http://tec-ch-mun-2011.herokuapp.com/application/showeventos" 
+			data-send="true" data-width="400" data-show-faces="false" data-font="verdana"></span>
+</div>
+
 <div id="eventosDiv" style="padding-left:0.5cm; width:95%">
 #{ifnot eventos}
 	&{'showEventos.noEventos'}
 #{/ifnot}
 #{list items:eventos, as:'evento'}
 	<div class="evento-box">
-		<div style="text-align: right;">
+		<div style="text-align: right; padding-right: 35px;">
 			${evento.fecha}
 		</div>
 		<a href="/eventos/${evento.id}">${evento.titulo}</a>
-		<div style="text-align: left ;">
+		<div style="text-align: left; padding-left: 25px;">
 		&{'showEventos.representante'}
 		#{if evento.mesa.representante}
 			<a href="mailto:${evento.mesa.representante.correo}">
@@ -57,9 +68,13 @@
 		html+='<a href="/eventos/'+evento.id+'">'+evento.titulo+'</a></th></tr>';
 		html+='</thead><tbody align="center"><tr><td>'+evento.descripcion+'</td>';
 		html+='</tr></tbody><tfoot align="right"><tr><td>';
-		html+=evento.fecha+' - <a href="mailto:'+evento.mesa.representante.correo;
-		html+='">'+evento.mesa.representante.nombre+'</a></td></tr></tfoot></table>';
+		html+=evento.fecha;
+		if (evento.mesa.representante){
+			html+=' - <a href="mailto:'+evento.mesa.representante.correo;
+			html+='">'+evento.mesa.representante.nombre+'</a>';
+		}
+		html+='</td></tr></tfoot></table>';
 		html+='</fieldset>';
 		return html;
 	}
-</script>
+</script></div>

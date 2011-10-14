@@ -2,20 +2,37 @@
 #{set title:'Home' /}
 
 <div>
+	<div style="text-align: left; padding-left: 25px;">
+		<a href="http://tec-ch-mun-2011.herokuapp.com/application/mensajes" 
+		class="twitter-share-button" 
+		data-url="http://tec-ch-mun-2011.herokuapp.com/mesajes/mensajes" 
+		data-text="&{'mensajes.tweet'}"
+		data-count="none">Tweet</a>
+		<span class="fb-like" data-href="http://tec-ch-mun-2011.herokuapp.com/application/mensajes" 
+					data-send="true" data-width="400" data-show-faces="false" data-font="verdana"></span>
+		#{if session.username}
+		<span>
+		<img src="/public/images/plus_icon.gif" style="cursor:pointer;" onclick="showDialog();" />
+		<span style="font-size: 12px;">&{'mensajes.agregarMensaje'}</span>
+		</span>
+		#{/if}
+	</div>
+<hr style="width: 95%" />
 #{ifnot mensajes}
 	&{'mensajes.noMensajes'}
 #{/ifnot}
 #{list items:mensajes, as:'mensaje'}
 	<div id="mensaje_box">
-		${mensaje.mensaje}
+		<span>${mensaje.mensaje}</span>
 		#{if mensaje.autor}
-			<span>&{'mensage.autor'}:</span>
-			<span>${mensage.autor.nombre}</span>
+			<div>
+				<span>&{'mensage.autor'}:</span>
+				<span>${mensage.autor.nombre}</span>
+			</div>
 		#{/if} 
 	</div>
 #{/list}
 #{if session.username}
-<span onclick="showDialog();">Agregar Mensaje</span>
 	<div id="publica_mensaje" class="modal_dialog">
 	<p>Publicar un Mensaje</p>
 	#{form @Application.publicarMensaje()}

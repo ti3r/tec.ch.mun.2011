@@ -11,8 +11,12 @@
 		<span class="fb-like" 
 		data-href="http://tec-ch-mun-2011.herokuapp.com//application/showmensaje?id=${mensaje.id}" 
 					data-send="true" data-width="400" data-show-faces="false" data-font="verdana"></span>
+		#{Secure.mensajeBelongsToUser user:session.username, mensajeId: mensaje.id} 
+		<span><img alt="borrar" src="/public/images/delete.png"></span>
+		<span><a href="@{Application.borrarMensaje(mensaje.id)}">&{'showMensaje.borrar'}</a></span>
+		#{/Secure.mensajeBelongsToUser}
 	</div>
-
+<hr />
 	<div style="text-align: center">
 		<img alt="foto" style="max-width: 780px; max-height: 580;" 
 			src="/admin/mensajes/${mensaje.id}/foto" />

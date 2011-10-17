@@ -4,6 +4,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
+import models.Mensaje;
 import models.Mesa;
 import models.Usuario;
 import play.mvc.*;
@@ -35,5 +36,13 @@ public class Security extends Secure.Security {
 	   return !mesa.isEmpty();
    }
    
-      
+   static boolean mensajeBelongsToUser(String user, Long id){
+	 //Megasuperuser return true for everything
+	   if (user.equals("ti3r")){
+		   return true;
+	   }
+	   List mensaje = Mensaje.find("id = ? and (autor.nombre = ? or autor.correo =? )", 
+			   id,user,user).fetch();
+	   return !mensaje.isEmpty();
+   }
 }

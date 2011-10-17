@@ -67,6 +67,7 @@ mensaje.autor=Autor:
 #showMensaje - Application Controller
 showMensaje.publicado=Publicado el:
 showMensaje.por=Por:
+showMensaje.borrar=Borrar Mensaje
 
 #general messages
 submit=Enviar

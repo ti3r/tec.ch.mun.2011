@@ -73,6 +73,12 @@ public class Application extends Controller {
     	render(mensaje);
     }
     
+    public static void borrarMensaje(Long id){
+    	Mensaje.delete("id = ?", id);
+    	
+    	redirect("/application/mensajes");
+    }
+    
     public static void publicarMensaje(@Valid Mensaje mensaje){
     	if (validation.hasErrors()){
     		params.flash();

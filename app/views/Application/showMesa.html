@@ -11,9 +11,9 @@
 	#{/Secure.mesaBelongsToUser}
 	<hr />
 	<div>&{'showMesa.header'}</div>
-	<label for="mesa.nombre">&{'nombre'}</label>
+	<label for="mesa.nombre">&{'showMesa.nombreDeMesa'}</label>
 	<b>${mesa.nombre}</b>
-	
+	<br />
 	<label for="mesa.representante">&{'representante'}</label>
 	#{if mesa.representante}
 		<a href="mailto:${mesa.representante.correo}">${mesa.representante.nombre}</a>
@@ -23,6 +23,7 @@
 	#{/ifnot}
 	#{if eventos}
 	
+	<br />
 	&{'showMesa.recentEventos'}
 	
 		#{list items:eventos, as:'evento'}
@@ -47,7 +48,7 @@
 						<td><input type="text" id="evento.titulo" name="evento.titulo" /></td>
 					</tr>
 					<tr>
-						<td align="left"><label for="evento.descripcion">&{'descripcion','Descripción'}</label></td>
+						<td align="left"><label for="evento.descripcion">&{'descripcion','Descripciï¿½n'}</label></td>
 						<td>
 							<textarea cols="20" rows="5" spellcheck="true"
 								 id="evento.descripcion" name="evento.descripcion" ></textarea>

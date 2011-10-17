@@ -14,7 +14,7 @@
 body{
 	background-image: url('/public/images/wood2.jpg');
 	background-repeat: repeat;
-	font:arial,sans-serif;
+	font:verdana, sans-serif;
 	max-width: 820px;
 	margin: auto;
 	text-align: center;
@@ -81,11 +81,11 @@ body{
 }
 /**/
 /*Menu Color Classes*/
-.green{background:#6AA63B;}
+.green{/*background:#6AA63B;*/ background-image: url('/public/images/home_menu_back.png')}
 .yellow{background:#FBC700;}
-.red{background:#D52100;}
-.purple{background:#7344D6;}
-.blue{background:#0292C0;}
+.red{/*background:#D52100;*/ background-image: url('/public/images/eventos_menu_back.png')}
+.purple{/*background:#7344D6;*/ background-image: url('/public/images/acerca_menu_back.png')}
+.blue{/*background:#0292C0;*/ background-image: url('/public/images/mensajes_menu_back.png')}
 
 #content{
 	background-image: url('/public/images/notebook.png');
@@ -155,8 +155,9 @@ body{
 }
 
 hr{
-	background-color: #123456;
 	height: 8px;
-	background-image: url('/public/images/backgroundBlack.png');
+	background-image: url('/public/images/horizontal.png');
+	background-repeat: repeat-x;
 	margin: 0 auto;
+	border: none;
 }

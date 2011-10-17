@@ -1,14 +1,14 @@
 package models;
 
-import play.*;
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+import javax.persistence.PrePersist;
+
 import play.data.validation.Required;
-import play.db.jpa.*;
-
-import javax.persistence.*;
-
+import play.db.jpa.Model;
 import controllers.CRUD.Hidden;
-
-import java.util.*;
 
 @Entity
 public class Mensaje extends Model {
@@ -19,6 +19,8 @@ public class Mensaje extends Model {
 	public Date fecha;
 	@OneToOne
 	public Usuario autor;
+	
+	public Imagen foto;
 	
 	@PrePersist
 	public void setFecha(){

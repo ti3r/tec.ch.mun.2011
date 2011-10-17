@@ -11,14 +11,13 @@
 			#{ifnot eventos}
 				<h3 align="center"><span>&{'index.noEventos'}</span></h3>
 			#{/ifnot}
-			<hr />
+			
 			#{list items:eventos, as:'evento'}
 				<div>
 						<a href="/eventos/${evento.id}">${evento.titulo}</a>
 						<p>${evento.fecha}#{if evento.mesa.representante} - <a href="mailto:${evento.mesa.representante.correo}">${evento.mesa.representante.nombre}</a>#{/if}</p>
 				</div>
 			#{/list}
-			<hr />
 			</div>
 		</td>
 		<td valign="top" width="50%">

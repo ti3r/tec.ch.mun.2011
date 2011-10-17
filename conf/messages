@@ -23,6 +23,9 @@ contacto=Contacto
 correo=E-Mail
 alta=Fecha de Alta
 
+#Mensajes Field
+mensaje=Mensaje
+
 #Index page  - Application Controller
 index.masEventos=Mas Eventos
 index.noticias=Noticias
@@ -44,6 +47,10 @@ showEvento.publishedOn=Publicado en:
 #escape ' characters because the msg will be wrapped by single quotes
 showEvento.noMoreComentariosMsg=No existen mas comentarios que mostrar
 showEvento.noEventos=No existen eventos aun!!!! Intenta mas Tarde
+
+#showEventos page - Application Controller
+showEventos.representante=Representante
+showEventos.noEventos=No existen eventos aun
 
 #showMesa Page - Application Controller
 showMesa.recentEventos=Eventos Ocurridos Recientemente
@@ -68,8 +75,8 @@ menu.home=Inicio
 menu.home.dtl=Pagina de Inicio
 menu.mesas=Mesas
 menu.mesas.dtl=Trabajo de Tec.ch.mun
-menu.eventos=Que Pasa?
-menu.eventos.dtl=Que ha ocurrido con las mesas
+menu.eventos=¿Que Pasa?
+menu.eventos.dtl=Que ha ocurrido en las mesas
 menu.mensajes=Mensajes
 menu.mensajes.dtl=Comunica Algo!!
 menu.acerca=Acerda de..

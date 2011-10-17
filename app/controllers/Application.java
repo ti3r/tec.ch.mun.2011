@@ -3,6 +3,8 @@ package controllers;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.eclipse.jdt.internal.core.SetContainerOperation;
+
 import models.Evento;
 import models.Mensaje;
 import models.Mesa;
@@ -64,6 +66,11 @@ public class Application extends Controller {
     public static void mensajes(){
     	List mensajes = Mensaje.find("order by fecha desc").fetch();
     	render(mensajes);
+    }
+    
+    public static void showMensaje(Long id){
+    	Mensaje mensaje = Mensaje.findById(id);
+    	render(mensaje);
     }
     
     public static void publicarMensaje(@Valid Mensaje mensaje){

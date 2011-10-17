@@ -21,13 +21,14 @@
 			</div>
 		</td>
 		<td valign="top" width="50%">
-			<div id="noticias">
+			<div id="noticias" class="noticias_column">
 				<h1 align="center"><a href="@{mensajes()}" style="text-decoration: underline; color:#000000;">&{'index.noticias'}</a></h1>
 				#{ifnot mensajes}
 					<h3 align="center"><span>&{'index.noMensajes'}</span></h3>
 				#{/ifnot}
 				#{list items:mensajes, as:'mensaje'}
 					<div>
+						<img alt="foto" src="/admin/mensajes/${mensaje.id}/foto" width="45px" height="45px;">
 						<p>${mensaje.mensaje}</p>
 						<div id="social" align="right">
 						<div id="fb-root"></div>

@@ -17,26 +17,31 @@
 		</span>
 		#{/if}
 	</div>
-<hr style="width: 95%" />
+
 #{ifnot mensajes}
 	&{'mensajes.noMensajes'}
 #{/ifnot}
 #{list items:mensajes, as:'mensaje'}
-	<div id="mensaje_box">
+	<div id="mensaje_box" class="mensaje_box">
+		<a href="@{showMensaje(mensaje.id)}">
+		<img class="msg_thumb" alt="foto" src="/admin/mensajes/${mensaje.id}/foto" 
+		width="45px" height="45px"><br />
 		<span>${mensaje.mensaje}</span>
-		#{if mensaje.autor}
+		</a>
+		#{if mensaje.autor != null}
 			<div>
-				<span>&{'mensage.autor'}:</span>
-				<span>${mensage.autor.nombre}</span>
+				<span>&{'mensaje.autor'}</span>
+				<span>${mensaje.autor}</span>
 			</div>
 		#{/if} 
 	</div>
+	<hr style="width: 95%" />
 #{/list}
 
 #{if session.username}
 	<div id="publica_mensaje" class="modal_dialog">
 	<p>Publicar un Mensaje</p>
-	#{form @Application.publicarMensaje()}
+	#{form @Application.publicarMensaje(), enctype:'multipart/form-data'}
 		<table>
 		<tr>
 			<td valign="top">
@@ -48,6 +53,11 @@
 		<tr>
 			<td>
 				<textarea id="mensaje.mensaje" name="mensaje.mensaje" cols="20" rows="5"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+					<input type="file" accept="image/gif, image/png, image/jpg" id="mensaje.foto" name="mensaje.foto" />
 			</td>
 		</tr>
 		<tr>

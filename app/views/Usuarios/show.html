@@ -8,6 +8,13 @@
     <div class="objectForm">
     #{form action:@save(object._key()), enctype:'multipart/form-data'}
         #{crud.form }
+        	#{crud.custom 'pass'}
+        	<div >        
+            <label for="object_alta">&{'pass','pass'}</label>
+    		<input type="password" id="object_pass" class="" 
+    			name="object.pass" value="${object.pass}"></input>
+			</div>
+        	#{/crud.custom}
         	#{crud.custom 'alta'}
         	<div >        
             <label for="object_alta">&{'alta','Alta'}</label>

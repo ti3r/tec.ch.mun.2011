@@ -11,6 +11,12 @@
 	height: 25px;
 }
 
+.img_thumb{
+	max-width: 45px;
+	max-height: 45px;	
+	overflow: hidden;
+}
+
 body{
 	background-image: url('/public/images/wood2.jpg');
 	background-repeat: repeat;
@@ -138,7 +144,10 @@ body{
 }
 
 
-#mensaje_box{
+.mensaje_box{
+	width: 98%;
+}
+.mensaje_box span{
 	text-align: left;
 	text-indent: 55px;
 }
@@ -160,4 +169,7 @@ hr{
 	background-repeat: repeat-x;
 	margin: 0 auto;
 	border: none;
+}
+.noticias_column{
+	width: 98%
 }

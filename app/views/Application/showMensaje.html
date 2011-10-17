@@ -1,0 +1,34 @@
+#{extends 'main.html' /}
+#{set title:'Home' /}
+
+<div>
+	<div style="text-align: left; padding-left: 25px;">
+		<a href="http://tec-ch-mun-2011.herokuapp.com//application/showmensaje?id=${mensaje.id}" 
+		class="twitter-share-button" 
+		data-url="http://tec-ch-mun-2011.herokuapp.com/mesajes/mensajes" 
+		data-text="&{'mensajes.tweet'}"
+		data-count="none">Tweet</a>
+		<span class="fb-like" 
+		data-href="http://tec-ch-mun-2011.herokuapp.com//application/showmensaje?id=${mensaje.id}" 
+					data-send="true" data-width="400" data-show-faces="false" data-font="verdana"></span>
+	</div>
+
+	<div style="text-align: center">
+		<img alt="foto" style="max-width: 780px; max-height: 580;" 
+			src="/admin/mensajes/${mensaje.id}/foto" />
+		<br />
+		<div style="width: 98%">
+		${mensaje.mensaje}
+		</div>
+		<div>
+		<label>&{'showMensaje.publicado'}</label> 
+		
+			${mensaje.fecha}
+			#{if mensaje.autor}
+			&{'showMensaje.por'} ${mensaje.autor}
+			#{/if}
+		
+			
+		</div>
+	</div>
+</div>

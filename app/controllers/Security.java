@@ -1,5 +1,7 @@
 package controllers;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import models.Mesa;
@@ -14,7 +16,12 @@ public class Security extends Secure.Security {
 	   }
 	   List usuarios = Usuario
 			   .find("nombre = ? or correo =?",username,username).fetch();
-	   return usuarios.isEmpty();
+	   if (usuarios.isEmpty()){
+		   return false;
+	   }else{
+		   Usuario usuario = (Usuario) usuarios.get(0);
+		   return usuario.comparePasswords(password);
+	   }
    }
    
    static boolean mesaBelongsToUser(String user, Long id){

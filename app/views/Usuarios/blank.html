@@ -8,9 +8,13 @@
     <div class="objectForm">
     #{form action:@create(), enctype:'multipart/form-data'}
         #{crud.form }
+        	#{crud.custom 'pass'}
+        	<label for="object.pass" >&{'pass','Password'}</label>
+        	<input type="password" id="object.pass" name="object.pass"> </input>
+        	#{/crud.custom}
         	#{crud.custom 'alta'}
         	<!-- Override the blank template to not show the alta field of the objects -->
-        	<input type="hidden" value="${object.alta}" ></input> 
+        	<input type="hidden" value="${object.alta}" ></input>
         	#{/crud.custom}
         #{/crud.form}
         <p class="crudButtons">

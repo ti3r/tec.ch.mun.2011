@@ -63,6 +63,10 @@ mensajes.noMensajes=No exiten comunicados que mostrar
 mensajes.mensaje=Escribe tu mensaje
 mensajes.tweet=Esto me parece interesante Tec-ch-Mun-2011
 mensajes.agregarMensaje=Agregar Mensaje
+mensaje.autor=Autor:
+#showMensaje - Application Controller
+showMensaje.publicado=Publicado el:
+showMensaje.por=Por:
 
 #general messages
 submit=Enviar

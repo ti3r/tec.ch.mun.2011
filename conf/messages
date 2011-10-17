@@ -32,6 +32,7 @@ index.noticias=Noticias
 index.noEventos=No existen eventos aun
 index.eventos=Eventos
 index.noMensajes=No existen mensajes aun
+index.noticiasTweet=Vi esta noticia en Tec.ch.mun.2011
 
 #showEvento Page  - Application Controller
 showEvento.mesaHeader=Mesa: 
@@ -70,17 +71,20 @@ welcome=Bienvenido
 footer=Tec.Ch.Mun 2011 Aplicación Web. Desarrollada con 
 play_framework_link=Play Framework
 
+#acerca de page
+acercade.mapa=El evento se lleva a cabo el en CIT del campus
+
 #Menu messages
 menu.home=Inicio
 menu.home.dtl=Pagina de Inicio
 menu.mesas=Mesas
 menu.mesas.dtl=Trabajo de Tec.ch.mun
 menu.eventos=¿Que Pasa?
-menu.eventos.dtl=Que ha ocurrido en las mesas
+menu.eventos.dtl=Eventos de las mesas
 menu.mensajes=Mensajes
 menu.mensajes.dtl=Comunica Algo!!
-menu.acerca=Acerda de..
-menu.acerca.dtl=Cosas Legales
+menu.acerca=Acerca de..
+menu.acerca.dtl=Info General
 
 #CRUD Messages
 crud.save=Guardar

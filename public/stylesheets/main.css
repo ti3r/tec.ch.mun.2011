@@ -155,8 +155,8 @@ body{
 }
 
 hr{
-	height: 8px;
-	background-image: url('/public/images/horizontal.png');
+	height: 14px;
+	background-image: url('/public/images/linea.png');
 	background-repeat: repeat-x;
 	margin: 0 auto;
 	border: none;

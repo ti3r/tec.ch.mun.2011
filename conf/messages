@@ -57,7 +57,8 @@ showEventos.noEventos=No existen eventos aun
 showMesa.recentEventos=Eventos Ocurridos Recientemente
 showMesa.addEvento=Agregar un Evento
 showMesa.header=Descripción de Mesa
-
+showMesa.nombreDeMesa=Nombre:
+showMesa.descripcion=Objetivo
 #Mensajes view - Application Controller
 mensajes.noMensajes=No exiten comunicados que mostrar
 mensajes.mensaje=Escribe tu mensaje

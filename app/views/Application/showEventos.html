@@ -60,21 +60,24 @@ data-count="none">Tweet</a>
 	}
 	
 	function buildEventoHtml(evento){
-		var html = '<fieldset class="evento-div"';
-		html+='style="border-color: '+evento.mesa.color+'" >';
-		html+='<legend>	<a href="@{showMesa()}?id='+evento.mesa.id+'">';
-		html+='<b>'+evento.mesa.nombre+'</b></a></legend>';
-		html+='	<table style="width:100%"><thead align="center"><tr><th>';
-		html+='<a href="/eventos/'+evento.id+'">'+evento.titulo+'</a></th></tr>';
-		html+='</thead><tbody align="center"><tr><td>'+evento.descripcion+'</td>';
-		html+='</tr></tbody><tfoot align="right"><tr><td>';
-		html+=evento.fecha;
+		var html = '<div class="evento-box">';
+		html+='<div style="text-align: right; padding-right: 35px;">';
+		var fech = new Date(evento.fecha);
+		html+=fech.toDateString();
+		html+='</div><a href="/eventos/';
+		#{if evento}
+			html+='${evento.id}';
+		#{/if}
+		html+='#">';
+		html+=evento.titulo+'</a>';
+		html+='<div style="text-align: left; padding-left: 25px;">';
+		html+='&{'showEventos.representante'}';
+		
 		if (evento.mesa.representante){
 			html+=' - <a href="mailto:'+evento.mesa.representante.correo;
 			html+='">'+evento.mesa.representante.nombre+'</a>';
 		}
-		html+='</td></tr></tfoot></table>';
-		html+='</fieldset>';
+		html+='</div><hr /></div>';			
 		return html;
 	}
 </script></div>

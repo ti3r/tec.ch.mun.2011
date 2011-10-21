@@ -21,15 +21,20 @@
 	#{ifnot mesa.representante}
 		&{'showMesa.noRepresentante'}
 	#{/ifnot}
-	#{if eventos}
-	
 	<br />
-	&{'showMesa.recentEventos'}
-	
+	<label for="mesa.nombre">&{'showMesa.descripcion'}</label>
+	<b>${mesa.descripcion}</b>
+	<br />
+	<hr style="background-color: ${mesa.color}; width:96%; background-image: none;">
+	#{if eventos}
+	<h4>&{'showMesa.recentEventos'}</h4>
 		#{list items:eventos, as:'evento'}
-				<div>
-				<div>${evento.titulo}</div>
-				<div>${evento.descripcion}</div>
+				<div style="text-align: center;">
+					<div style="margin:0 auto; max-width:450px;">${evento.titulo}</div>
+					<div style="margin:0 auto; max-width:450px;">${evento.descripcion}</div>
+					#{if eventos.size > 1}
+					<hr style="width:45%" />
+					#{/if}
 				</div>
 		#{/list}
 	

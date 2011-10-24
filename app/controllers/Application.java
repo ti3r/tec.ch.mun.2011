@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.eclipse.jdt.internal.core.SetContainerOperation;
 
+import models.Comentario;
 import models.Evento;
 import models.Mensaje;
 import models.Mesa;
@@ -113,5 +114,11 @@ public class Application extends Controller {
     
     public static void acercade(){
     	render();
+    }
+    
+    public static void publicarComentario(@Valid Comentario comentario){
+    	System.out.println(comentario.toString());
+    	comentario.save();
+    	showEvento(comentario.evento.id);
     }
 }

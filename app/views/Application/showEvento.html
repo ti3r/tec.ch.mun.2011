@@ -1,83 +1,107 @@
 #{extends 'main.html' /}
 #{set title:'Home' /}
 
-<div class="evento-div" style="border-color:${evento.mesa.color}" >
-	<div style="background-color:${evento.mesa.color}" >
-		<img style="visibility:hidden; background-color: ${evento.mesa.color};" 
-			alt="loading..." src="/public/images/loader.gif" id="loader"/>
-	</div>
-	<div id="social" align="right">
-	<div id="fb-root"></div>
-	<script>(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) {return;}
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));</script>
+<div>
 
-	<div class="fb-like" data-href="http://localhost:9000/eventos/${evento.id}" 
-		data-send="false" 
-		data-layout="button_count" 
-		data-show-faces="false"></div>
+	<a href="http://tec-ch-mun-2011.herokuapp.com/eventos/${evento.id}" 
+		class="twitter-share-button" 
+		data-url="http://tec-ch-mun-2011.herokuapp.com/eventos/${evento.id}" 
+		data-text="&{'mensajes.tweet'}"
+		data-count="none">Tweet</a>
 	
-	<a href="https://twitter.com/share" class="twitter-share-button"
-		data-url="http://localhost:9000/eventos/${evento.id}"
-		data-text="&{'showEvento.tweeterMsg'}" 
-		data-count="horizontal">Tweet</a>
-	<script type="text/javascript" src="//platform.twitter.com/widgets.js">
-	</script>
-	
-	<!-- Place this tag where you want the +1 button to render -->
-	<g:plusone size="medium" href="http://localhost:9000/eventos/${evento.id}"></g:plusone>
-	
-	<!-- Place this render call where appropriate -->
-	<script type="text/javascript">
-	  (function() {
-	    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-	    po.src = 'https://apis.google.com/js/plusone.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-	  })();
-	</script>
-	
-	</div>
-	
-	<div align="center">
-		<b>&{'showEvento.mesaHeader'}</b>
+	<span class="fb-like" 
+	data-href="http://tec-ch-mun-2011.herokuapp.com/application/eventos/${evento.id}" 
+	data-send="true" data-width="400" data-show-faces="false" data-font="verdana"></span>
+	<span>
+		<img src="/public/images/plus_icon.gif" style="cursor:pointer;" onclick="showDialog();" />
+		<span style="font-size: 12px;">&{'showEvento.agregarComentario'}</span>
+	</span>
+		
+	<hr style="width: 95%" />
+	<div>
+	<b>&{'showEvento.mesaHeader'}</b>
 		<a href="@{showMesa()}?id=${evento.mesa.id}">
 			${evento.mesa.nombre}
 		</a>
-		<br />
-		&{'showEvento.repContactMsg'}
+		&nbsp;
 		#{if evento.mesa.representante}
+		<b>&{'showEvento.repContactMsg'}</b>
 		<a href="mailto:${evento.mesa.representante.correo}" >
 			${evento.mesa.representante.nombre}
 		</a>
 		#{/if}
 	</div>
-	<div id="evento">
+	
+	<div id="evento" style="width:95 %">
 		<p align="center">
 		${evento.titulo}
 		</p>
-		<p align="left">
+		<p align="center">
 		${evento.descripcion}
 		</p>
 	</div>
 	
-	<hr />
+	<div style="text-align: right; padding-right: 25px;">
+		&{'showEvento.fechaFooter'}${evento.fecha}
+	</div>
 	
+	<hr style="width:95%"/>
+	
+	<br />
 	<div id="comments">
 	
 	</div>
-	
+	<br />
 	<input id="btnComentarios" type="button" value="&{'showEvento.commentarios'}" 
 		onclick="getComentarios();" />
-	
-	<div style="text-align: right;" class="evento-div">
-		&{'showEvento.fechaFooter'}${evento.fecha}
+
+	<!-- Agregar comentario -->
+	<div id="publica_comentario" class="modal_dialog">
+	<br />
+	<p>&{'showEvento.enviaComentario'}</p>
+	#{form @Application.publicarComentario(), enctype:'multipart/form-data'}
+		<table>
+		<tr>
+			<td colspan="2" valign="top">
+				<input type="hidden" id="comentario.evento.id" name="comentario.evento.id" 
+				value="${evento.id}" />
+				<label for="comentario.comentario">&{'showEvento.enviaComentario.comentario'}</label>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<textarea id="comentario.comentario" name="comentario.comentario" cols="30" rows="3"></textarea>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="comentario.autor">&{'showEvento.enviaComentario.autor'}</label>
+			</td>
+			<td>
+				<input type="text" id="comentario.autor" name="comentario.autor" ></input>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<label for="comentario.contacto">&{'showEvento.enviaComentario.contacto'}</label>
+			</td>
+			<td>
+				<input type="text" id="comentario.contacto" name="comentario.contacto" ></input>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+			<input type="submit" id="submit" onclick="" name="submit" value="&{'submit'}" />
+			<input type="reset" id="reset" name="reset" value="&{'reset'}" />
+			</td>
+		</tr>
+		</table>
+	#{/form}
 	</div>
-</div>
+
 <script type="text/javascript">
+	
+	$(document).ready(function(){getComentarios();});
 	
 	var pagina = 0;
 
@@ -103,7 +127,9 @@
 					pagina = data.pagina;
 				}else{
 					$('#btnComentarios').attr('disabled','disabled');
-					$('#comments').append('${noMoreComentariosMsg}');
+					if (data.comentarios.length == 0){
+						$('#comments').append('${noMoreComentariosMsg}');
+					}
 				}
 				$('#loader').css('visibility','hidden');
 			},
@@ -114,18 +140,32 @@
 	}
 		
 	function buildCommentHtml(comentario){
-		var result = (comentario.autor)? comentario.autor : "&{'showEvento.anonimous'}"
+		var result = '<div style="width:95%">';
+		if(comentario.autor != ""){
+			result += comentario.autor;
+		} else{
+			result+="&{'showEvento.anonimous'}";
+		}
 		result += " &{'showEvento.said'} ";
 		result += comentario.comentario;
+		result += '<br />';
 		if (comentario.contacto){
 			result += " &{'showEvento.contactAt'} ";
-			result += '<a href="mailto:'+comentario.contacto+'">'+comentario.contacto+'</a>';
+			result += '<a href="mailto:'+comentario.contacto+'">'+comentario.contacto+'</a><br />';
 		}
 		if (comentario.fecha){
 			result += "&{'showEvento.publishedOn'}"+comentario.fecha
 		}
-		result += '<br />';
+		result += '<br /></div>';
 		return result;
 	}
 	
+	$('#publica_comentario').modialog();
+	
+	function showDialog(){
+		$('#publica_comentario').modialog('open');
+	}
+	
 </script>
+
+</div>

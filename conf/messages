@@ -24,7 +24,7 @@ correo=E-Mail
 alta=Fecha de Alta
 
 #Mensajes Field
-mensaje=Mensaje
+mensaje=Mensaje53
 
 #Index page  - Application Controller
 index.masEventos=Mas Eventos
@@ -39,15 +39,21 @@ showEvento.mesaHeader=Mesa:
 showEvento.repContactMsg=Contacta al representante en: 
 showEvento.fechaFooter=Publicado:
 showEvento.tweeterMsg=Esto paso en Tec.Ch.Mun 2011 
-showEvento.commentarios=Comentarios
+showEvento.commentarios=Mas Comentarios
 showEvento.anonimous=Anonimo
 showEvento.said= dijo:
 showEvento.contactAt=Contactalo:  
-showEvento.publishedOn=Publicado en: 
+showEvento.publishedOn=Enviado en: 
 #hmtl message that will be attached to the comments of one eventos please
 #escape ' characters because the msg will be wrapped by single quotes
 showEvento.noMoreComentariosMsg=No existen mas comentarios que mostrar
 showEvento.noEventos=No existen eventos aun!!!! Intenta mas Tarde
+showEvento.agregarComentario=Enviar un Comentario
+showEvento.enviaComentario=Envia un Comentario
+showEvento.enviaComentario.comentario=Escribe tu comentario aqui
+showEvento.enviaComentario.autor=Tu Nombre
+showEvento.enviaComentario.contacto=Tu Correo
+showEvento.anonimous=Anonimo
 
 #showEventos page - Application Controller
 showEventos.representante=Representante
@@ -59,6 +65,8 @@ showMesa.addEvento=Agregar un Evento
 showMesa.header=Descripción de Mesa
 showMesa.nombreDeMesa=Nombre:
 showMesa.descripcion=Objetivo
+showMesa.noRepresentante=Sin Representante Aun
+
 #Mensajes view - Application Controller
 mensajes.noMensajes=No exiten comunicados que mostrar
 mensajes.mensaje=Escribe tu mensaje

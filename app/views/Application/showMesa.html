@@ -16,10 +16,10 @@
 	<br />
 	<label for="mesa.representante">&{'representante'}</label>
 	#{if mesa.representante}
-		<a href="mailto:${mesa.representante.correo}">${mesa.representante.nombre}</a>
+		<b><a href="mailto:${mesa.representante.correo}">${mesa.representante.nombre}</a></b>
 	#{/if}
 	#{ifnot mesa.representante}
-		&{'showMesa.noRepresentante'}
+		<b>&{'showMesa.noRepresentante'}</b>
 	#{/ifnot}
 	<br />
 	<label for="mesa.nombre">&{'showMesa.descripcion'}</label>

@@ -39,9 +39,13 @@ public class Usuario extends Model {
 			this.pass = new String( 
 					MessageDigest.getInstance("MD5").digest(this.pass.getBytes()));
 		} catch (NoSuchAlgorithmException e) {
-			this.pass = this.pass;
+			e.printStackTrace();
 			//Pasword will be stored in plain text. Fix this.
 		}
+	}
+	
+	public boolean compareEncriptedPassowrd(String md5Password){
+		return pass.equals(md5Password);
 	}
 	
 	public boolean comparePasswords(String password){
@@ -49,7 +53,7 @@ public class Usuario extends Model {
 		try {
 			String pass = new String(
 			   MessageDigest.getInstance("MD5").digest(password.getBytes()));
-			return pass.equals(this.pass);
+			compareEncriptedPassowrd(pass);
 		} catch (NoSuchAlgorithmException e) {
 			//Something wrong happened log error and compare plain passwords
 			e.printStackTrace();

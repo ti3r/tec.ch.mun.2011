@@ -24,9 +24,11 @@
 #{list items:mensajes, as:'mensaje'}
 	<div id="mensaje_box" class="mensaje_box">
 		<a href="@{showMensaje(mensaje.id)}">
+		#{if mensaje.foto.type != null }
 		<img class="msg_thumb" alt="foto" src="/admin/mensajes/${mensaje.id}/foto" 
 		width="45px" height="45px"><br />
-		<span>${mensaje.mensaje}</span>
+		#{/if }
+		<pre>${mensaje.mensaje}</pre>
 		</a>
 		#{if mensaje.autor != null}
 			<div>

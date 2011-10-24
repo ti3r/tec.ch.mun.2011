@@ -26,6 +26,11 @@ body{
 	text-align: center;
 	padding-top: 25px;
 }
+pre{
+	font:verdana, sans-serif;
+	font-family:cursive;
+	text-align: center;
+}
 
 #log_information{
 	padding-right: 25px;
@@ -88,7 +93,7 @@ body{
 /**/
 /*Menu Color Classes*/
 .green{/*background:#6AA63B;*/ background-image: url('/public/images/home_menu_back.png')}
-.yellow{background:#FBC700;}
+.yellow{/*background:#FBC700;*/background-image: url('/public/images/mesas_menu_back.png')}
 .red{/*background:#D52100;*/ background-image: url('/public/images/eventos_menu_back.png')}
 .purple{/*background:#7344D6;*/ background-image: url('/public/images/acerca_menu_back.png')}
 .blue{/*background:#0292C0;*/ background-image: url('/public/images/mensajes_menu_back.png')}

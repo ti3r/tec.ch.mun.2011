@@ -18,11 +18,13 @@
 	</div>
 <hr />
 	<div style="text-align: center">
+		#{if mensaje.foto.type != null}
 		<img alt="foto" style="max-width: 780px; max-height: 580;" 
 			src="/admin/mensajes/${mensaje.id}/foto" />
+		#{/if}
 		<br />
 		<div style="width: 98%">
-		${mensaje.mensaje}
+		<pre>${mensaje.mensaje}</pre>
 		</div>
 		<div>
 		<label>&{'showMensaje.publicado'}</label> 
@@ -31,8 +33,6 @@
 			#{if mensaje.autor}
 			&{'showMensaje.por'} ${mensaje.autor}
 			#{/if}
-		
-			
 		</div>
 	</div>
 </div>

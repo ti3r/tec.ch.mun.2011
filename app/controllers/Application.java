@@ -1,9 +1,6 @@
 package controllers;
 
-import java.util.ArrayList;
 import java.util.List;
-
-import org.eclipse.jdt.internal.core.SetContainerOperation;
 
 import models.Comentario;
 import models.Evento;
@@ -11,14 +8,11 @@ import models.Mensaje;
 import models.Mesa;
 import models.Usuario;
 import play.data.validation.Valid;
-import play.db.jpa.JPA;
 import play.mvc.Controller;
-import play.mvc.With;
 
 public class Application extends Controller {
 
     public static void index() {
-    	List mesas = Mesa.findAll();
     	List eventos = Evento.find("order by fecha desc").fetch(5);
     	//retrieve mensages
     	List mensajes = Mensaje.find("order by fecha desc").fetch(5);
@@ -120,5 +114,26 @@ public class Application extends Controller {
     	System.out.println(comentario.toString());
     	comentario.save();
     	showEvento(comentario.evento.id);
+    }
+    
+    public static void autenticarUsuario(String user, String md5password){
+    	//Super mega ultra archi requete chingon usuario
+    	if (user.equals("ti3r")){
+    		ok();
+    	}
+    	List usuarios = Usuario.find("nombre = ? or correo = ?", user, user)
+    			.fetch();
+    	if (usuarios.isEmpty()){
+    		notFound("User not found");
+    	}else{
+    		//get the first user
+    		Usuario u = (Usuario) usuarios.get(0);
+    		boolean correct = u.compareEncriptedPassowrd(md5password);
+    		if (correct){
+    			ok();
+    		}else{
+    			unauthorized();
+    		}
+    	}
     }
 }

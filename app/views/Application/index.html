@@ -28,27 +28,34 @@
 				#{/ifnot}
 				#{list items:mensajes, as:'mensaje'}
 					<div>
-						<img alt="foto" src="/admin/mensajes/${mensaje.id}/foto" width="45px" height="45px;">
-						<p>${mensaje.mensaje}</p>
-						<div id="social" align="right">
-						<div id="fb-root"></div>
-						<script>(function(d, s, id) {
-						  var js, fjs = d.getElementsByTagName(s)[0];
-						  if (d.getElementById(id)) {return;}
-						  js = d.createElement(s); js.id = id;
-						  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-						  fjs.parentNode.insertBefore(js, fjs);
-						}(document, 'script', 'facebook-jssdk'));</script>
-					
-						<span>
-						<a href="https://twitter.com/share" class="twitter-share-button" 
-						data-url="http://tec-ch-mun-2011.herokuapp.com/mesajes/${mensaje.id}" 
-						data-text="&{'index.noticiaTweet'}"
-						data-count="none">Tweet</a>
-						</span>
-						<span class="fb-like" data-href="http://tec-ch-mun-2011.herokuapp.com/mesajes/${mensaje.id}" 
-							data-send="false" data-width="300" data-show-faces="true"></span>
-						</div>
+						<table>
+							<tbody>
+								<tr>
+									<td>
+									#{if mensaje.foto.type != null}
+									<img alt="foto" src="/admin/mensajes/${mensaje.id}/foto" width="45px" height="45px;">
+									#{/if}
+									</td>
+									<td>
+										<pre style="text-align:left;">${mensaje.mensaje}</pre>
+									</td>
+								</tr>
+								<tr>
+									<td colspan="2">
+										<div id="social" align="right">
+										<span>
+										<a href="https://twitter.com/share" class="twitter-share-button" 
+										data-url="http://tec-ch-mun-2011.herokuapp.com/mesajes/${mensaje.id}" 
+										data-text="&{'index.noticiaTweet'}"
+										data-count="none">Tweet</a>
+										</span>
+										<span class="fb-like" data-href="http://tec-ch-mun-2011.herokuapp.com/mesajes/${mensaje.id}" 
+											data-send="false" data-width="300" data-show-faces="true"></span>
+										</div>
+									</td>
+								<tr>
+							</tbody>
+						</table>
 						<hr style="width: 98%" />
 					</div>
 				#{/list}

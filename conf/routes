@@ -21,14 +21,14 @@ GET		/rest/eventos/mas/{lastPage}		EventoResources.getMoreEventos
 
 #Comentario Services
 GET		/rest/comentarios				ComentarioResources.comentariosList
-GET		/rest/comentarios/{eventoId}	ComentarioResources.getComentarios
-GET		/rest/comentarios/{eventoId}/mas/{pagina}	ComentarioResources.getComentarios
+*		/rest/comentarios/{eventoId}	ComentarioResources.getComentarios
+*		/rest/comentarios/{eventoId}/mas/{pagina}	ComentarioResources.getComentarios
 POST	/rest/comentarios/add			ComentarioResources.postComentrio
 
 # Import CRUD routes
 *     /admin           						module:crud
 # Ignore favicon requests
-GET     /favicon.ico                            404
+#GET     /favicon.ico                            404
 
 # Map static resources from the /app/public folder to the /public path
 GET     /public/                                staticDir:public

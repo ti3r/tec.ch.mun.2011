@@ -168,6 +168,11 @@ pre{
 	font-size: 24px;
 }
 
+.mensaje_thumb{
+	width:80px;
+	height:auto;
+}
+
 hr{
 	height: 14px;
 	background-image: url('/public/images/linea.png');

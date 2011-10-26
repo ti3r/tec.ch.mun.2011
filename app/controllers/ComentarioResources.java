@@ -34,8 +34,12 @@ public class ComentarioResources extends Controller {
         
     public static void postComentrio(Long eventoId, String comentario,
     		String autor, String contacto){
+	System.out.println("Entering postComentario with this parameters"+
+	"eventoId="+eventoId+", comentario="+comentario+", autor="+
+	autor+",contacto= "+contacto);
+
     	Evento e = Evento.findById(eventoId);
-    	
+ 	System.out.println("Found for evento id "+e);   	
     	if (e != null && comentario != null && !comentario.isEmpty()){
     		Comentario com = new Comentario(e, comentario);
     		if (autor != null)

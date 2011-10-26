@@ -25,6 +25,12 @@ GET		/rest/comentarios				ComentarioResources.comentariosList
 *		/rest/comentarios/{eventoId}/mas/{pagina}	ComentarioResources.getComentarios
 POST	/rest/comentarios/add			ComentarioResources.postComentrio
 
+#Mnesajes Services
+POST	/rest/mensajes					MensajesResources.getMensajes
+GET 	/rest/mensajes					MensajesResources.getMensajes
+POST	/rest/mensajes/newMensajes		MensajesResources.areThereNewMensajes
+POST	/rest/mensajes/getNewMensjaes	MensajesResources.fetchNewMensajes
+
 # Import CRUD routes
 *     /admin           						module:crud
 # Ignore favicon requests

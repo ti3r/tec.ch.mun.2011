@@ -31,7 +31,7 @@ public class ComentarioResources extends Controller {
     	result.pagina = pagina;
     	renderJSON(result);
     }
-    
+        
     public static void postComentrio(Long eventoId, String comentario,
     		String autor, String contacto){
     	Evento e = Evento.findById(eventoId);

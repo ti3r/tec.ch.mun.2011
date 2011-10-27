@@ -8,6 +8,7 @@ import models.Mensaje;
 import models.Mesa;
 import models.Usuario;
 import play.data.validation.Valid;
+import play.db.jpa.Blob;
 import play.mvc.Controller;
 
 public class Application extends Controller {
@@ -139,6 +140,22 @@ public class Application extends Controller {
     		}else{
     			unauthorized();
     		}
+    	}
+    }
+    
+    public static void cambiarFotoDeMensaje(){
+    	List<Mensaje> mensajes = Mensaje.findAll();
+    	render(mensajes);
+    }
+    
+    public static void cambiafoto(Long mensajeId, Blob foto){
+    	Mensaje mensaje = Mensaje.findById(mensajeId);
+    	if (mensaje != null){
+    		mensaje.foto = foto;
+    		mensaje.save();
+    		redirect("/application/mensajes");
+    	}else if (mensaje == null){
+    		error("Mensaje no encontrado para id"+mensajeId);
     	}
     }
 }

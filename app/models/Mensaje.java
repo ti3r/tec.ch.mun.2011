@@ -34,7 +34,10 @@ public class Mensaje extends Model {
 	}
 	
 	public String getFecha(){
-		return SimpleDateFormat.getInstance().format(fecha);
+		if (fecha != null)
+			return SimpleDateFormat.getInstance().format(fecha);
+		else
+			return "";
 	}
 	
 	public String toString(){

@@ -16,7 +16,10 @@
 		<img src="/public/images/plus_icon.gif" style="cursor:pointer;" onclick="showDialog();" />
 		<span style="font-size: 12px;">&{'showEvento.agregarComentario'}</span>
 	</span>
-		
+	#{if session.username} 
+		<span><img alt="borrar" src="/public/images/delete.png"></span>
+		<span><a href="@{Application.borrarEvento(evento.id)}">&{'showEvento.borrar'}</a></span>
+	#{/if}
 	<hr style="width: 95%" />
 	<div>
 		<a style="font-size: 26px;" href="@{showMesa()}?id=${evento.mesa.id}">

@@ -74,6 +74,11 @@ public class Application extends Controller {
     	redirect("/application/mensajes");
     }
     
+    public static void borrarEvento(Long id){
+    	Evento.delete("id = ?", id);
+    	redirect("/application/showeventos");
+    }
+    
     public static void publicarMensaje(@Valid Mensaje mensaje){
     	if (validation.hasErrors()){
     		params.flash();

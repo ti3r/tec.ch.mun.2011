@@ -54,6 +54,7 @@ showEvento.enviaComentario.comentario=Escribe tu comentario aqui
 showEvento.enviaComentario.autor=Tu Nombre
 showEvento.enviaComentario.contacto=Tu Correo
 showEvento.anonimous=Anonimo
+showEvento.borrar=Borrar Evento
 
 #showEventos page - Application Controller
 showEventos.representante=Representante

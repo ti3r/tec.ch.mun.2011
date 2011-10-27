@@ -39,7 +39,7 @@ public class Evento extends Model {
 	}
 	
 	public String getFecha(){
-		return SimpleDateFormat.getDateInstance().format(fecha);
+		return SimpleDateFormat.getDateTimeInstance().format(fecha);
 	}
 	
 	@PrePersist

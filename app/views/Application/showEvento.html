@@ -19,11 +19,10 @@
 		
 	<hr style="width: 95%" />
 	<div>
-	<b>&{'showEvento.mesaHeader'}</b>
-		<a href="@{showMesa()}?id=${evento.mesa.id}">
-			${evento.mesa.nombre}
+		<a style="font-size: 26px;" href="@{showMesa()}?id=${evento.mesa.id}">
+			<b>${evento.mesa.nombre}</b>
 		</a>
-		&nbsp;
+		<br />
 		#{if evento.mesa.representante}
 		<b>&{'showEvento.repContactMsg'}</b>
 		<a href="mailto:${evento.mesa.representante.correo}" >
@@ -33,8 +32,8 @@
 	</div>
 	
 	<div id="evento" style="width:95 %">
-		<p align="center">
-		${evento.titulo}
+		<p style="font-size: 22px" align="center">
+		<b>${evento.titulo}</b>
 		</p>
 		<p align="center">
 		${evento.descripcion}

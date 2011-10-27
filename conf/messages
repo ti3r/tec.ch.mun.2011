@@ -36,7 +36,7 @@ index.noticiasTweet=Vi esta noticia en Tec.ch.mun.2011
 
 #showEvento Page  - Application Controller
 showEvento.mesaHeader=Mesa: 
-showEvento.repContactMsg=Contacta al representante en: 
+showEvento.repContactMsg=Envia un correo a: 
 showEvento.fechaFooter=Publicado:
 showEvento.tweeterMsg=Esto paso en Tec.Ch.Mun 2011 
 showEvento.commentarios=Mas Comentarios

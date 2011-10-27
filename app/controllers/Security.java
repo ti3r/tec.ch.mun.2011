@@ -12,11 +12,11 @@ import play.mvc.*;
 public class Security extends Secure.Security {
 
    static boolean authentify(String username, String password){
-	   if (username.equals("ti3r")){
+	   if (username.trim().equals("ti3r")){
 		   return true;
 	   }
 	   List usuarios = Usuario
-			   .find("nombre = ? or correo =?",username,username).fetch();
+			   .find("nombre = ? or correo =?",username.trim(),username.trim()).fetch();
 	   if (usuarios.isEmpty()){
 		   return false;
 	   }else{

@@ -35,7 +35,7 @@
 								<tr>
 									<td>
 									#{if mensaje.foto.type != null}
-									<img alt="foto" class="mensaje_thumb" src="/admin/mensajes/${mensaje.id}/foto" />
+									<img alt="foto" class="mensaje_thumb" src="@{mensajeFoto(mensaje.id)}" />
 									#{/if}
 									</td>
 									<td>

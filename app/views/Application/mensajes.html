@@ -25,7 +25,7 @@
 	<div id="mensaje_box" class="mensaje_box">
 		<a href="@{showMensaje(mensaje.id)}">
 		#{if mensaje.foto.type != null }
-		<img class="mensaje_thumb" alt="foto" src="/admin/mensajes/${mensaje.id}/foto"  />
+		<img class="mensaje_thumb" alt="foto" src="@{mensajeFoto(mensaje.id)}"  />
 		<br />
 		#{/if }
 		<pre>${mensaje.mensaje}</pre>

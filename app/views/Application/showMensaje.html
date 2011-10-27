@@ -20,7 +20,7 @@
 	<div style="text-align: center">
 		#{if mensaje.foto.type != null}
 		<img alt="foto" style="max-width: 780px; max-height: auto;" 
-			src="/admin/mensajes/${mensaje.id}/foto" />
+			src="@{mensajeFoto(mensaje.id)}" />
 		#{/if}
 		<br />
 		<div style="width: 98%">

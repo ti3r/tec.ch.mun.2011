@@ -158,4 +158,11 @@ public class Application extends Controller {
     		error("Mensaje no encontrado para id"+mensajeId);
     	}
     }
+    
+    public static void mensajeFoto(long id){
+    	final Mensaje mensaje = Mensaje.findById(id);
+    	notFoundIfNull(mensaje);
+    	response.setContentTypeIfNotSet(mensaje.foto.type());
+    	renderBinary(mensaje.foto.get());
+    }
 }

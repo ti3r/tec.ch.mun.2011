@@ -5,7 +5,7 @@
 #Evento Fields
 mesa=Mesa
 titulo=Titulo
-descripcion=Descripcion
+descripcion=Descripción
 fecha=Fecha
 
 #Mesa Fields
@@ -36,11 +36,11 @@ index.noticiasTweet=Vi esta noticia en Tec.ch.mun.2011
 
 #showEvento Page  - Application Controller
 showEvento.mesaHeader=Mesa: 
-showEvento.repContactMsg=Envia un correo a: 
+showEvento.repContactMsg=Enviá un correo a: 
 showEvento.fechaFooter=Publicado:
 showEvento.tweeterMsg=Esto paso en Tec.Ch.Mun 2011 
 showEvento.commentarios=Mas Comentarios
-showEvento.anonimous=Anonimo
+showEvento.anonimous=Anónimo
 showEvento.said= dijo:
 showEvento.contactAt=Contactalo:  
 showEvento.publishedOn=Enviado en: 
@@ -49,11 +49,11 @@ showEvento.publishedOn=Enviado en:
 showEvento.noMoreComentariosMsg=No existen mas comentarios que mostrar
 showEvento.noEventos=No existen eventos aun!!!! Intenta mas Tarde
 showEvento.agregarComentario=Enviar un Comentario
-showEvento.enviaComentario=Envia un Comentario
-showEvento.enviaComentario.comentario=Escribe tu comentario aqui
+showEvento.enviaComentario=Enviá un Comentario
+showEvento.enviaComentario.comentario=Escribe tu comentario aquí
 showEvento.enviaComentario.autor=Tu Nombre
 showEvento.enviaComentario.contacto=Tu Correo
-showEvento.anonimous=Anonimo
+showEvento.anonimous=Anónimo
 showEvento.borrar=Borrar Evento
 
 #showEventos page - Application Controller
@@ -69,7 +69,7 @@ showMesa.descripcion=Objetivo
 showMesa.noRepresentante=Sin Representante Aun
 
 #Mensajes view - Application Controller
-mensajes.noMensajes=No exiten comunicados que mostrar
+mensajes.noMensajes=No existen comunicados que mostrar
 mensajes.mensaje=Escribe tu mensaje
 mensajes.tweet=Esto me parece interesante Tec-ch-Mun-2011
 mensajes.agregarMensaje=Agregar Mensaje
@@ -85,7 +85,7 @@ reset=Limpiar
 welcome=Bienvenido
 footer=Tec.Ch.Mun 2011 Aplicación Web. Desarrollada con 
 play_framework_link=Play Framework
-
+android_market_msg=Descarga para android o busca en el Market "Tec Ch Mun 2011"
 #acerca de page
 acercade.mapa=El evento se lleva a cabo el en CIT del campus
 

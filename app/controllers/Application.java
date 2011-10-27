@@ -14,9 +14,9 @@ import play.mvc.Controller;
 public class Application extends Controller {
 
     public static void index() {
-    	List eventos = Evento.find("order by fecha desc").fetch(5);
+    	List eventos = Evento.find("order by id desc").fetch(5);
     	//retrieve mensages
-    	List mensajes = Mensaje.find("order by fecha desc").fetch(5);
+    	List mensajes = Mensaje.find("order by id desc").fetch(5);
     	
     	render(eventos, mensajes);
     }

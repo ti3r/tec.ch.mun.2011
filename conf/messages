@@ -33,6 +33,7 @@ index.noEventos=No existen eventos aun
 index.eventos=Eventos
 index.noMensajes=No existen mensajes aun
 index.noticiasTweet=Vi esta noticia en Tec.ch.mun.2011
+index.masMensajes=Mas Mensajes
 
 #showEvento Page  - Application Controller
 showEvento.mesaHeader=Mesa: 

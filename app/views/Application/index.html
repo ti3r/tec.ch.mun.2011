@@ -14,7 +14,7 @@
 			
 			#{list items:eventos, as:'evento'}
 				<div>
-						<a style="font-size: 22px" href="/eventos/${evento.id}">${evento.titulo}</a>
+						<a style="font-size: 20px" href="/eventos/${evento.id}">${evento.titulo}</a>
 						<p style="font-size: 10px">
 							${evento.fecha}#{if evento.mesa.representante} - <a href="mailto:${evento.mesa.representante.correo}">${evento.mesa.representante.nombre}</a>#{/if}
 							</p>

@@ -112,3 +112,8 @@ crud.index.title=Elige un objeto para administrar
 crud.index.add=Agregar
 crud.title=Administración
 crud.blank.title=Agregar %s
+
+#resumen
+resumen.header=Desafortunadamente Tec Ch Mun 2011 ha concluido<br/>Fue muy divertido y una gran experiencia haber participado en este grandioso evento<br />Nos vemos el año que entra en Tec Ch Mun 2012<br /><br />Si te lo perdiste y quieres saber que paso aqui esta nuestro resumen de actividades
+resumen.eventos=Eventos
+resumen.mensajes=Mensajes

@@ -34,7 +34,7 @@
 							<tbody>
 								<tr>
 									<td>
-									#{if mensaje.foto.type != null}
+									#{if mensaje.encoded_foto != null}
 									<img alt="foto" class="mensaje_thumb" src="@{mensajeFoto(mensaje.id)}" />
 									#{/if}
 									</td>

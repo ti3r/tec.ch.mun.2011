@@ -39,9 +39,13 @@ public class Evento extends Model {
 	}
 	
 	public String getFecha(){
-		DateFormat format = SimpleDateFormat.getDateTimeInstance();
-		format.setTimeZone(TimeZone.getTimeZone("America/Chihuahua"));
-		return format.format(fecha);
+		if (fecha != null){
+			Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("America/Chihuahua"));
+			calendar.setTime(fecha);
+			return SimpleDateFormat.getInstance().format(calendar.getTime());
+		}else{
+			return "";
+		}
 	}
 	
 	@PrePersist

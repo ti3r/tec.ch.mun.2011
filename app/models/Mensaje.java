@@ -1,18 +1,17 @@
 package models;
 
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.TimeZone;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 
-import org.apache.commons.lang.StringEscapeUtils;
-
 import play.data.validation.Required;
 import play.db.jpa.Blob;
 import play.db.jpa.Model;
-import play.mvc.results.RenderBinary;
 import controllers.CRUD.Hidden;
 
 @Entity
@@ -34,9 +33,11 @@ public class Mensaje extends Model {
 	}
 	
 	public String getFecha(){
-		if (fecha != null)
-			return SimpleDateFormat.getInstance().format(fecha);
-		else
+		if (fecha != null){
+			Calendar calendar = Calendar.getInstance(TimeZone.getTimeZone("America/Chihuahua"));
+			calendar.setTime(fecha);
+			return SimpleDateFormat.getInstance().format(calendar.getTime());
+		}else
 			return "";
 	}
 	

@@ -34,6 +34,7 @@ index.eventos=Eventos
 index.noMensajes=No existen mensajes aun
 index.noticiasTweet=Vi esta noticia en Tec.ch.mun.2011
 index.masMensajes=Mas Mensajes
+index.finishMsg=Tec Ch Mun 2011 ha concluido mira el resumen de actividades <a href="/application/resumen">aqui</a>
 
 #showEvento Page  - Application Controller
 showEvento.mesaHeader=Mesa: 
@@ -113,3 +114,8 @@ crud.index.title=Elige un objeto para administrar
 crud.index.add=Agregar
 crud.title=Administración
 crud.blank.title=Agregar %s
+
+#resumen
+resumen.header=Desafortunadamente Tec Ch Mun 2011 ha concluido<br/>Fue muy divertido y una gran experiencia haber participado en este grandioso evento<br />Nos vemos el año que entra en Tec Ch Mun 2012<br /><br />Si te lo perdiste y quieres saber que paso aqui esta nuestro resumen de actividades
+resumen.eventos=Eventos
+resumen.mensajes=Mensajes

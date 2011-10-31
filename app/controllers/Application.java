@@ -1,7 +1,10 @@
 package controllers;
 
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.util.List;
 
+import models.Base64Coder;
 import models.Comentario;
 import models.Evento;
 import models.Mensaje;
@@ -102,6 +105,22 @@ public class Application extends Controller {
 	    			mensaje.autor = (Usuario) anon.get(0);
 	    		}
 	    	}
+	    	if (mensaje.foto != null){
+				//encode the foto
+				long length = mensaje.foto.getFile().length();
+				if (length > Integer.MAX_VALUE){
+					System.err.println("Foto Too large");
+				}else{
+					byte[] bytes = new byte[(int)length];
+					try {
+						mensaje.foto.get().read(bytes);
+						char[] rawImg = Base64Coder.encode(bytes);
+						mensaje.encoded_foto = new String(rawImg);
+					} catch (IOException e) {
+						System.err.println("Error encripting foto");
+					}
+				}
+			}
 	    	mensaje.save();
     	}
     	mensajes();
@@ -162,7 +181,16 @@ public class Application extends Controller {
     public static void mensajeFoto(long id){
     	final Mensaje mensaje = Mensaje.findById(id);
     	notFoundIfNull(mensaje);
-    	response.setContentTypeIfNotSet(mensaje.foto.type());
-    	renderBinary(mensaje.foto.get());
+    	response.setContentTypeIfNotSet("image/*");
+    	byte[] img = Base64Coder.decode(mensaje.encoded_foto);
+    	
+    	renderBinary(new ByteArrayInputStream(img));
     }
+    
+    public static void resumen(){
+    	List<Evento> eventos = Evento.findAll();
+    	List<Mensaje> mensajes = Mensaje.findAll();
+    	render(eventos, mensajes);
+    }
+    
 }

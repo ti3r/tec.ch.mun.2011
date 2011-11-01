@@ -170,9 +170,20 @@ public class Application extends Controller {
     public static void cambiafoto(Long mensajeId, Blob foto){
     	Mensaje mensaje = Mensaje.findById(mensajeId);
     	if (mensaje != null){
-    		mensaje.foto = foto;
-    		mensaje.save();
-    		redirect("/application/mensajes");
+    		if (foto.getFile().length() > Integer.MAX_VALUE){
+    			error("Foto file is to large");
+    		}else{
+	    		byte[] bytes = new byte[(int)foto.getFile().length()];
+	    		try {
+					foto.get().read(bytes);
+					String foto_encoded = new String (Base64Coder.encode(bytes));
+		    		mensaje.encoded_foto = foto_encoded;
+		    		mensaje.save();
+		    		redirect("/application/mensajes");
+				} catch (IOException e) {
+					error("Error encoding Mensaje Foto");
+				}
+    		}
     	}else if (mensaje == null){
     		error("Mensaje no encontrado para id"+mensajeId);
     	}
@@ -181,10 +192,13 @@ public class Application extends Controller {
     public static void mensajeFoto(long id){
     	final Mensaje mensaje = Mensaje.findById(id);
     	notFoundIfNull(mensaje);
-    	response.setContentTypeIfNotSet("image/*");
-    	byte[] img = Base64Coder.decode(mensaje.encoded_foto);
-    	
-    	renderBinary(new ByteArrayInputStream(img));
+    	if (mensaje.encoded_foto != null && !mensaje.encoded_foto.equals("")){
+	    	response.setContentTypeIfNotSet("image/*");
+	    	byte[] img = Base64Coder.decode(mensaje.encoded_foto);
+	    	renderBinary(new ByteArrayInputStream(img));
+    	}else{
+    		notFound("Foto not found");
+    	}
     }
     
     public static void resumen(){
